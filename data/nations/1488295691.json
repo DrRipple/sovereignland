@@ -1,0 +1,13 @@
+{
+	"name": "Testland",
+	"official": "Republic of Testland",
+	"userID": "",
+
+	"stats": {
+		"GDPpc": 60264,
+		"GNIpc": 46852,
+		"pop": 10023544,
+		"CPI": 88,
+		"LE": 82.5,
+	}
+}
