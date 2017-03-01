@@ -1,0 +1,27 @@
+{
+	"email": "test@domain.com",
+	"name": "Hans",
+	"image": "http://imageurl.website/file.png",
+
+	"1488295691": {
+		"nation": "Testland",
+		"official": "Republic of Testland",
+		"motto": "Develop for the future.",
+		"default_flag": true,
+		"flag": "se",
+
+		"world": "Norrland",
+		"world_privileges": "icmb",
+
+		"stats": {
+			"GDPpc": 60264,
+			"GNIpc": 46852,
+			"pop": 10023544,
+			"CPI": 88,
+			"LE": 82.5,
+			"EI": 0.832,
+			"GINI": 24.9,
+			"WHR": 7.291,
+		}
+	}
+}
