@@ -8,20 +8,28 @@
 		"official": "Republic of Testland",
 		"motto": "Develop for the future.",
 		"default_flag": true,
-		"flag": "se",
+		"flag": "",
+		"pop": 10023544,
 
 		"world": "Norrland",
 		"world_privileges": "icmb",
 
-		"stats": {
+		"religion": {
+			"gov": false,
+			"society": 1
+		},
+
+		"economy": {
 			"GDPpc": 60264,
 			"GNIpc": 46852,
-			"pop": 10023544,
+			"GINI": 24.9
+		},
+
+		"civil_stats": {
 			"CPI": 88,
 			"LE": 82.5,
 			"EI": 0.832,
-			"GINI": 24.9,
-			"WHR": 7.291,
+			"WHR": 7.291
 		}
 	}
 }
