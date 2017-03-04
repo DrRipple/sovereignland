@@ -1,13 +1,14 @@
 #nationtitle {
     padding-bottom: 40px;
     border-bottom: 10px solid #3472e9;
+    margin-bottom: 40px;
 }
 
 #nationtitle img {
     float: left;
     width: 150px;
     margin-right: 14px;
-    outline: 1px solid #ccc;
+    box-shadow: 0 0 8px #ccc;
 }
 
 #nationtitle h1 {
@@ -24,13 +25,28 @@
     margin-top: 40px;
 }
 
-#vitals {
-    float: left;
-    padding: 20px;
-    width: 240px;
-    background: #f2f2f2;
-    list-style: none;
+.box {
+    background: #fff;
+    box-shadow: 0 0 8px #ccc;
+    display: inline-block;
     margin: 0 20px 20px 0;
+}
+
+.boxtitle {
+    display: block;
+    background: #3472e9;
+    color: #fff;
+    padding: 8px;
+    font-size: 18px;
+}
+
+#vitals {
+    width: 280px;
+}
+
+#vitals ul {
+    padding: 0 20px;
+    list-style: none;
 }
 
 #vitals li {
@@ -52,6 +68,13 @@
 }
 
 #vitals a:hover {
-    color: #777;
     text-decoration: underline;
+}
+
+#overview {
+    width: 460px;
+}
+
+#overview p {
+    padding: 0 20px;
 }
