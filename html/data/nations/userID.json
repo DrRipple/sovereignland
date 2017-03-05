@@ -6,11 +6,9 @@
 	"1488295691": {
 		"nation": "Testland",
 		"official": "Republic of Testland",
-		"motto": "Develop for the future.",
-		"default_flag": true,
 		"flag": "",
 		"pop": 10023544,
-
+		"currency": "SEK",
 		"world": "Norrland",
 		"world_privileges": "icmb",
 
@@ -19,13 +17,10 @@
 			"society": 1
 		},
 
-		"economy": {
+		"stats": {
 			"GDPpc": 60264,
 			"GNIpc": 46852,
-			"GINI": 24.9
-		},
-
-		"civil_stats": {
+			"GINI": 24.9,
 			"CPI": 88,
 			"LE": 82.5,
 			"EI": 0.832,
