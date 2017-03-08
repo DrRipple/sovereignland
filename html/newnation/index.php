@@ -6,6 +6,9 @@
 		<link rel="stylesheet" href="style.css">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
+
+        <meta name="google-signin-client_id" content="1057622173913-bpi238tov8so32pbm4lj12u4elordq20.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
     </head>
     <body>
     	<div id="topbar">
@@ -17,6 +20,8 @@
             </div>
         </div>
     	<form action="phase2.php" method="post">
+    		<input type="hidden" name="token" id="tokenbox">
+    		
     		<span class="textfield">
 	    		<p>Nation Name</p>
 	    		<input type="text" name="name">
@@ -45,7 +50,7 @@
 
 	    	<span class="textfield">
 	    		<p>Flag URL</p>
-	    		<input type="text" name="flag">
+	    		<input type="text" name="flag" onblur="updateFlagPreview()" id="flag_url">
 	    		<p class="helptext">To use a custom flag, upload it to an image sharing site and enter the direct link. Leave the box blank to use the default flag.</p>
 	    		<p>Preview:</p>
 	    		<img src="../data/flag.png" id="flagpreview">
@@ -54,9 +59,35 @@
 	    	<hr>
 
 	    	<span class="textfield">
-	    		<p><input type="checkbox" name="confirmation" value="true"> I confirm that I have read and will abide by the <a href="#">Terms and Conditions</a>.</p>
+    			<p id="g_signin_text">Sign-In With Google</p>
+    			<div class="g-signin2" data-onsuccess="onSignIn"></div>
+    		</span>
+
+	    	<span class="textfield" id="finalbutton">
+	    		<p>By clicking the button below, you confirm that you have read and will abide by the <a href="#" target="_blank">Terms and Conditions</a>.</p>
+	    		<button>Proceed to Next Step</button>
 	    	</span>
-	    	<button>Proceed to Next Step</button>
     	</form>
+
+    	<script>
+    		function updateFlagPreview() {
+    			var flagURL = document.getElementById("flag_url").value;
+    			var previewBox = document.getElementById("flagpreview");
+    			if (flagURL == "") flagURL = "../data/flag.png";
+    			previewBox.src = flagURL;
+    		}
+
+    		function onSignIn(googleUser) {
+    			var profile = googleUser.getBasicProfile();
+    			var signinText = document.getElementById("g_signin_text");
+    			signinText.innerHTML = "Signed-In as: " + profile.getName();
+
+    			var proceedButton = document.getElementById("finalbutton");
+    			proceedButton.style.display = "block";
+
+    			var tokenBox = document.getElementById("tokenbox");
+    			tokenBox.value = googleUser.getAuthResponse().id_token;
+    		}
+    	</script>
     </body>
 </html>
