@@ -1,10 +1,28 @@
 <!DOCTYPE html>
+<?php
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+if (isset($_GET["w"]) && isset($_GET["n"])) {
+    $nation = test_input($_GET["n"]);
+    $world = test_input($_GET["w"]);
+
+    $basicdata_json = file_get_contents("../data/nations/$world/$nation/basic.json");
+    $basicdata = json_decode($basicdata_json, true);
+} else {
+    echo "No nation or region specified.";
+    die();
+}
+?>
 <html>
     <head>
         <title>Sovereign.Land</title>
-        <link rel="stylesheet" href="css/viewer.css">
-        <link rel="stylesheet" href="css/nation_styles.css">
-        <link rel="icon" type="image/png" href="favicon.png">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="../favicon.png">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
     </head>
@@ -15,18 +33,18 @@
                     <h1>sovereign.land</h1>
                 </div>
                 <ul id="nav">
-                    <li><a href="#" class="active">Solborg</a></li>
+                    <li><a href="#" class="active"><?php echo $basicdata['name']?></a></li>
                     <li><a href="#">Messages</a></li>
-                    <li><a href="#">Norrland</a></li>
+                    <li><a href="#"><?php echo $world ?></a></li>
                     <li><a href="#">Settings</a></li>
                 </ul>
             </div>
         </div>
         <div id="content">
             <div id="nationtitle">
-                <img src="temp/flag.jpg">
-                <h1>Solborg</h1>
-                <p>Officially <b>The Republic of Solborg</b></p>
+                <img src="<?php echo $basicdata['flagURL']?>">
+                <h1><?php echo $basicdata['name']?></h1>
+                <p>Officially <b><?php echo $basicdata['official'] ?></b></p>
             </div>
             <div id="vitals" class="box">
                 <span class="boxtitle">Vitals</span>
@@ -41,8 +59,7 @@
             </div>
             <div id="overview" class="box">
                 <span class="boxtitle">Overview</span>
-                <p>Solborg is a medium-sized Scandinavian nation home to 20 million people. It is highly developed and runs off of a capitalist economy, combined with a strong welfare state. The country's largest trading partners are Norsolonia, Rhineland, and Amenembourg.</p>
-                <p>A majority of the government's funds go toward education and healthcare, contributing to the nation's high life expectancy and scores on the education index.</p>
+                <p>Testing Information</p>
             </div>
         </div>
     </body>

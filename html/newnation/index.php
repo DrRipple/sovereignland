@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+<?php
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+if (isset($_GET["w"])) {
+    $world = test_input($_GET["w"]);
+} else {
+    $world = "";
+}
+?>
 <html>
 	<head>
 		<title>Create Nation | Sovereign.Land</title>
@@ -21,6 +35,12 @@
         </div>
     	<form action="phase2.php" method="post">
     		<input type="hidden" name="token" id="tokenbox">
+
+            <span class="textfield">
+                <p>World Code</p>
+                <input type="text" name="world" value="<?php echo $world ?>">
+                <p class="helptext">Enter the code for the world you wish to join. Browse worlds <a href="#" target="_blank">here</a>.</p>
+            </span>
     		
     		<span class="textfield">
 	    		<p>Nation Name</p>
@@ -50,7 +70,7 @@
 
 	    	<span class="textfield">
 	    		<p>Flag URL</p>
-	    		<input type="text" name="flag" onblur="updateFlagPreview()" id="flag_url">
+	    		<input type="text" name="flag" onblur="flagPreview()" id="flag_url">
 	    		<p class="helptext">To use a custom flag, upload it to an image sharing site and enter the direct link. Leave the box blank to use the default flag.</p>
 	    		<p>Preview:</p>
 	    		<img src="../data/flag.png" id="flagpreview">
@@ -70,7 +90,7 @@
     	</form>
 
     	<script>
-    		function updateFlagPreview() {
+    		function flagPreview() {
     			var flagURL = document.getElementById("flag_url").value;
     			var previewBox = document.getElementById("flagpreview");
     			if (flagURL == "") flagURL = "../data/flag.png";
