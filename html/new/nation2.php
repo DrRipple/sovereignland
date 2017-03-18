@@ -11,11 +11,12 @@ if (isset($_POST["token"])) {
     $t = time();
 
     $worldcode = md5(test_input($_POST["world"]));
-    $worldcodes_json = file_get_contents("../data/worldcodes.json");
-    if (strpos($worldcodes_json, $worldcode) !== false) {
-        $worldcodes = json_decode($worldcodes_json, true);
-        if ($worldcodes[$worldcode]["exp"] > $t) {
-            $world = $worldcodes[$worldcode]["name"];
+    $worldcode_file = "../data/worldcodes/$worldcode.json";
+    $worldcode_json = file_get_contents($worldcode_file);
+    if ($worldcode_json !== false) {
+        $worldcode_data = json_decode($worldcode_json, true);
+        if ($worldcode_data["exp"] > $t) {
+            $world = $worldcode_data["name"];
         } else {
             echo "That code has expired.";
             die();

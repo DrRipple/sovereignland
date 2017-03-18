@@ -33,7 +33,7 @@ if (isset($_GET["w"])) {
                 </div>
             </div>
         </div>
-    	<form action="phase2.php" method="post">
+    	<form action="nation2.php" method="post">
     		<input type="hidden" name="token" id="tokenbox">
 
             <span class="textfield">
