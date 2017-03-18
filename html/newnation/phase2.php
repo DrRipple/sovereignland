@@ -10,7 +10,7 @@ function test_input($data) {
 if (isset($_POST["token"])) {
     $t = time();
 
-    $worldcode = test_input($_POST["world"]);
+    $worldcode = md5(test_input($_POST["world"]));
     $worldcodes_json = file_get_contents("../data/worldcodes.json");
     if (strpos($worldcodes_json, $worldcode) !== false) {
         $worldcodes = json_decode($worldcodes_json, true);
