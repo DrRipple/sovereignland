@@ -10,11 +10,16 @@ function test_input($data) {
 if (isset($_GET["w"]) && isset($_GET["n"])) {
     $nation = test_input($_GET["n"]);
     $world = test_input($_GET["w"]);
+    $world_display = str_replace("_", " ", $world);
 
     $basicdata_json = file_get_contents("../data/nations/$world/$nation/basic.json");
+    if ($basicdata_json == false) {
+        echo "Incorrect world or nation code.";
+        die();
+    }
     $basicdata = json_decode($basicdata_json, true);
 } else {
-    echo "No nation or region specified.";
+    echo "No nation or world specified.";
     die();
 }
 ?>
@@ -35,7 +40,7 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
                 <ul id="nav">
                     <li><a href="#" class="active"><?php echo $basicdata['name']?></a></li>
                     <li><a href="#">Messages</a></li>
-                    <li><a href="#"><?php echo $world ?></a></li>
+                    <li><a href="#"><?php echo $world_display ?></a></li>
                     <li><a href="#">Settings</a></li>
                 </ul>
             </div>

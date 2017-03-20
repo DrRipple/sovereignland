@@ -20,6 +20,8 @@
             </div>
         </div>
         <form action="world2.php" method="post">
+            <input type="hidden" name="token" id="tokenbox">
+        
             <span class="textfield">
                 <p>World Name</p>
                 <input type="text" name="name">
