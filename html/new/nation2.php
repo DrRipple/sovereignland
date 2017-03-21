@@ -28,6 +28,10 @@ if (isset($_POST["token"])) {
 
     $token_URL = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=" . $_POST["token"];
     $userID_json = file_get_contents("$token_URL");
+    if (strpos($userID_json, "Invalid Value") !== false) {
+        echo "Something went wrong with the authentication of your Google Account.";
+        die();
+    }
     $userID_data = json_decode($userID_json, true);
     $userID = $userID_data["sub"];
 
@@ -45,6 +49,7 @@ if (isset($_POST["token"])) {
     $basics = json_encode($basics_data);
     $basicsfile = fopen("$dirpath/basic.json", "w");
     fwrite($basicsfile, $basics);
+    fclose($basicsfile);
 } else {
     header("Location: http://sovereign.land/newnation/");
     die();
