@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -51,20 +52,25 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
                 <h1><?php echo $basicdata['name']?></h1>
                 <p>Officially <b><?php echo $basicdata['official'] ?></b></p>
             </div>
-            <div id="vitals" class="box">
-                <span class="boxtitle">Vitals</span>
-                <ul>
-                    <li><b>World: </b>Norrland</li>
-                    <li><b>Population: </b>19,802,411</li>
-                    <li><b>Unemployment: </b><span class="greatstat">2.9%</span></li>
-                    <li><b>Happiness: </b><span class="greatstat">7.504</span></li>
-                    <li><b>Development: </b><span class="greatstat">0.951</span></li>
-                    <li><a href="#">More Statistics</a></li>
-                </ul>
+            <div id="wiki">
+
             </div>
-            <div id="overview" class="box">
-                <span class="boxtitle">Overview</span>
-                <p>Testing Information</p>
+            <div id="boxes">
+                <div id="vitals" class="box">
+                    <span class="boxtitle">Vitals</span>
+                    <ul>
+                        <li><b>World: </b>Norrland</li>
+                        <li><b>Population: </b>19,802,411</li>
+                        <li><b>Unemployment: </b><span class="greatstat">2.9%</span></li>
+                        <li><b>Happiness: </b><span class="greatstat">7.504</span></li>
+                        <li><b>Development: </b><span class="greatstat">0.951</span></li>
+                        <li><a href="#">More Statistics</a></li>
+                    </ul>
+                </div>
+                <div id="overview" class="box">
+                    <span class="boxtitle">Overview</span>
+                    <p>Testing Information</p>
+                </div>
             </div>
         </div>
     </body>
