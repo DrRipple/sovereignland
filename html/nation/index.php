@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <?php
+require "../data/Parsedown.php";
+$Parsedown = new Parsedown();
 
 function test_input($data) {
     $data = trim($data);
@@ -19,6 +21,8 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
         die();
     }
     $basicdata = json_decode($basicdata_json, true);
+    $wikifile = "../data/nations/$world/$nation/wiki.md";
+    $wikidata = file_get_contents($wikifile);
 } else {
     echo "No nation or world specified.";
     die();
@@ -36,14 +40,14 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
         <div id="topbar">
             <div id="topcontainer">
                 <div id="desc">
-                    <h1>sovereign.land</h1>
+                    <h1><a href="../">sovereign.land</a></h1>
                 </div>
-                <ul id="nav">
-                    <li><a href="#" class="active"><?php echo $basicdata['name']?></a></li>
+                <!--<ul id="nav">
+                    <li><a href="#" class="active"></a></li>
                     <li><a href="#">Messages</a></li>
-                    <li><a href="#"><?php echo $world_display ?></a></li>
+                    <li><a href="#"></a></li>
                     <li><a href="#">Settings</a></li>
-                </ul>
+                </ul>-->
             </div>
         </div>
         <div id="content">
@@ -53,7 +57,7 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
                 <p>Officially <b><?php echo $basicdata['official'] ?></b></p>
             </div>
             <div id="wiki">
-
+                <?php echo $Parsedown->text($wikidata) ?>
             </div>
             <div id="boxes">
                 <div id="vitals" class="box">
