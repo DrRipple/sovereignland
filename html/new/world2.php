@@ -38,7 +38,7 @@ if (isset($_POST["token"])) {
     );
     $info_json = json_encode($info_data);
     $info_file = fopen("../data/worlds/$name.json", "w");
-    fwrite($data_file, $info_json);
+    fwrite($info_file, $info_json);
     fclose($info_file);
 
     $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -55,6 +55,7 @@ if (isset($_POST["token"])) {
     $code_hash = md5($code);
     $code_file = fopen("../data/worldcodes/$code_hash.json", "w");
     fwrite($code_file, $code_json);
+    fclose($code_file);
 }
 ?>
 <html>
@@ -76,9 +77,7 @@ if (isset($_POST["token"])) {
         </div>
         <form action="world2.php" method="post">
             <span class="textfield">
-                <p>World Name</p>
-                <input type="text" name="name">
-                <p class="helptext">Enter the name of your world (ex. Earth). This is what will be displayed on the world browser.</p>
+                <p><?php echo $code ?></p>
             </span>
         </form>
     </body>
