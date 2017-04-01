@@ -35,46 +35,66 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
         <link rel="icon" type="image/png" href="../favicon.png">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
+
+        <meta name="google-signin-client_id" content="1057622173913-bpi238tov8so32pbm4lj12u4elordq20.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script>
+            function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            }
+
+            function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                    console.log("User signed out.");
+                });
+            }
+        </script>
     </head>
     <body>
         <div id="topbar">
             <div id="topcontainer">
-                <div id="desc">
-                    <h1><a href="../">sovereign.land</a></h1>
-                </div>
-                <!--<ul id="nav">
-                    <li><a href="#" class="active"></a></li>
-                    <li><a href="#">Messages</a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#">Settings</a></li>
-                </ul>-->
+                <h1>
+                    <a href="../">sovereign.land</a>
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                </h1>
             </div>
         </div>
-        <div id="content">
+        <div id="titlearea">
             <div id="nationtitle">
                 <img src="<?php echo $basicdata['flagURL']?>">
                 <h1><?php echo $basicdata['name']?></h1>
-                <p>Officially <b><?php echo $basicdata['official'] ?></b></p>
             </div>
-            <div id="wiki">
-                <?php echo $Parsedown->text($wikidata) ?>
+            <ul id="navbar">
+                <li class="active"><a href="#">Wiki Entry</a></li>
+                <li><a href="#">Latest News</a></li>
+                <li><a href="#">Information</a></li>
+                <li><a href="#">Statistics</a></li>
+                <li><a href="#">Friends</a></li>
+            </ul>
+        </div>
+        <div id="wiki">
+            <?php echo $Parsedown->text($wikidata) ?>
+        </div>
+        <div id="boxes">
+            <div id="vitals" class="box">
+                <span class="boxtitle">Vitals</span>
+                <ul>
+                    <li><b>World: </b>Norrland</li>
+                    <li><b>Population: </b>19,802,411</li>
+                    <li><b>Unemployment: </b><span class="greatstat">2.9%</span></li>
+                    <li><b>Happiness: </b><span class="greatstat">7.504</span></li>
+                    <li><b>Development: </b><span class="greatstat">0.951</span></li>
+                    <li><a href="#">More Statistics</a></li>
+                </ul>
             </div>
-            <div id="boxes">
-                <div id="vitals" class="box">
-                    <span class="boxtitle">Vitals</span>
-                    <ul>
-                        <li><b>World: </b>Norrland</li>
-                        <li><b>Population: </b>19,802,411</li>
-                        <li><b>Unemployment: </b><span class="greatstat">2.9%</span></li>
-                        <li><b>Happiness: </b><span class="greatstat">7.504</span></li>
-                        <li><b>Development: </b><span class="greatstat">0.951</span></li>
-                        <li><a href="#">More Statistics</a></li>
-                    </ul>
-                </div>
-                <div id="overview" class="box">
-                    <span class="boxtitle">Overview</span>
-                    <p>Testing Information</p>
-                </div>
+            <div id="overview" class="box">
+                <span class="boxtitle">Overview</span>
+                <p>Testing Information</p>
             </div>
         </div>
     </body>
