@@ -14,6 +14,7 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
     $nation = test_input($_GET["n"]);
     $world = test_input($_GET["w"]);
     $world_display = str_replace("_", " ", $world);
+    $world_url = "../world?w=$world";
 
     $basicdata_json = file_get_contents("../data/nations/$world/$nation/basic.json");
     if ($basicdata_json == false) {
@@ -60,21 +61,24 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
             <div id="topcontainer">
                 <h1>
                     <a href="../">sovereign.land</a>
-                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 </h1>
+                <span id="signin"><a href="../signin">Sign In</a> or <a href="../new/nation.php">Sign Up</a></span>
             </div>
         </div>
         <div id="titlearea">
             <div id="nationtitle">
                 <img src="<?php echo $basicdata['flagURL']?>">
-                <h1><?php echo $basicdata['name']?></h1>
+                <h1>
+                    <a id="world" href="<?php echo $world_url ?>"><?php echo $world_display ?></a> /
+                    <?php echo $basicdata['name']?>
+                </h1>
             </div>
             <ul id="navbar">
-                <li class="active"><a href="#">Wiki Entry</a></li>
-                <li><a href="#">Latest News</a></li>
-                <li><a href="#">Information</a></li>
-                <li><a href="#">Statistics</a></li>
-                <li><a href="#">Friends</a></li>
+                <li class="active"><img src="../data/icons/nation_wiki.png"><a href="#">Wiki Entry</a></li>
+                <li><img src="../data/icons/nation_news.png"><a href="#">Latest News</a></li>
+                <li><img src="../data/icons/nation_info.png"><a href="#">Information</a></li>
+                <li><img src="../data/icons/nation_stats.png"><a href="#">Statistics</a></li>
+                <li><img src="../data/icons/nation_friends.png"><a href="#">Friends</a></li>
             </ul>
         </div>
         <div id="wiki">
