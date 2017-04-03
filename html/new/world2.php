@@ -32,7 +32,6 @@ if (isset($_POST["token"])) {
     $info_data = array(
         "userID" => $userID,
         "banner" => test_input($_POST["flag"]),
-        "website" => test_input($_POST["site"]),
         "sharing" => test_input($_POST["sharing"]),
         "desc" => test_input($_POST["desc"])
     );
@@ -75,10 +74,7 @@ if (isset($_POST["token"])) {
                 </div>
             </div>
         </div>
-        <form action="world2.php" method="post">
-            <span class="textfield">
-                <p><?php echo $code ?></p>
-            </span>
+            <p>Your world code (save this): <?php echo $code ?></p>
         </form>
     </body>
 </html>

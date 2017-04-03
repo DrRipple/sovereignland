@@ -33,9 +33,12 @@ if (isset($_POST["token"])) {
         die();
     }
     $userID_data = json_decode($userID_json, true);
-    $userID = $userID_data["sub"];
+    $userID = md5($userID_data["sub"]);
 
-    $dirpath = "../data/nations/$world/" . $t;
+    $dirname = test_input($_POST["name"]);
+    $dirname = strtolower($dirname);
+    $dirname = str_replace(" ", "_", $dirname);
+    $dirpath = "../data/nations/$world/" . $dirname;
     mkdir($dirpath, 0755, true);
 
     $basics_data = array(

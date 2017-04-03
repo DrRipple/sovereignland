@@ -45,12 +45,6 @@
             </span>
 
             <span class="textfield">
-                <p>World Website</p>
-                <input type="text" name="site">
-                <p class="helptext">Enter the URL of your world's website. You can make one easily with Google Sites, for example.</p>
-            </span>
-
-            <span class="textfield">
                 <p>Flag/Banner URL</p>
                 <input type="text" name="flag" onblur="flagPreview()" id="flag_url">
                 <p class="helptext">To use a custom flag, upload it to an image sharing site and enter the direct link. Leave the box blank to use the default flag.</p>
