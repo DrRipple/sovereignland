@@ -1,0 +1,98 @@
+body {
+	font-family: "Roboto", sans-serif;
+	font-size: 18px;
+	margin: 0;
+	color: #4f4f4f;
+}
+
+#boxtop {
+    background: #3472e9;
+    border-bottom: 10px solid #2a57ae;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	color: #fff;
+	text-align: center;
+	width: 442px;
+	padding: 40px;
+	margin: 80px auto 0 auto;
+}
+
+h1 {
+	font-family: "Montserrat", sans-serif;
+	font-size: 32px;
+	margin: 0;
+}
+
+h2 {
+	font-size: 24px;
+	margin: 10px 0 0 0;
+}
+
+#boxtop a, #boxtop a:visited {
+	color: inherit;
+}
+
+#boxtop a:hover {
+	text-decoration: none;
+}
+
+#boxbottom {
+	border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+	width: 440px;
+	padding: 30px 40px 40px 40px;
+	margin: 0 auto;
+}
+
+input[type=text] {
+	-ms-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
+	width: 100%;
+	font: inherit;
+	color: inherit;
+	padding: 4px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	background: #fff;
+}
+
+input[type=text]:hover {
+	border-color: #4f4f4f;
+}
+
+input[type=text]:focus {
+	outline: none;
+	border-color: #4f4f4f;
+	background-color: #f0f0f0;
+}
+
+button {
+	display: none;
+	margin-top: 18px;
+	background: #fff;
+	border: 1px solid #ccc;
+	padding: 12px 24px;
+	font-size: 18px;
+	font-family: inherit;
+	color: #4f4f4f;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+button:hover {
+	border-color: #4f4f4f;
+}
+
+button:active {
+	background: #eee;
+	border-color: #4f4f4f;
+}
+
+button:focus {
+	outline: none;
+}

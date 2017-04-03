@@ -38,7 +38,7 @@ body {
     padding: 6px 0;
 }
 
-#signin a {
+#signin a, #signin a:visited {
     color: inherit;
     font-weight: bold;
     text-decoration: none;
@@ -84,7 +84,7 @@ body {
     padding: 0 6px;
 }
 
-#navbar a, #navbar a:hover {
+#navbar a, #navbar a:visited {
     color: #4f4f4f;
     text-decoration: none;
 }
@@ -107,7 +107,7 @@ body {
     font-size: 48px;
 }
 
-#world {
+#world, #world:visited {
     font-size: 36px;
     text-decoration: none;
     color: #4f4f4f;

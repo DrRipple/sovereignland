@@ -36,25 +36,6 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
         <link rel="icon" type="image/png" href="../favicon.png">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
-
-        <meta name="google-signin-client_id" content="1057622173913-bpi238tov8so32pbm4lj12u4elordq20.apps.googleusercontent.com">
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <script>
-            function onSignIn(googleUser) {
-                var profile = googleUser.getBasicProfile();
-                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-                console.log('Name: ' + profile.getName());
-                console.log('Image URL: ' + profile.getImageUrl());
-                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-            }
-
-            function signOut() {
-                var auth2 = gapi.auth2.getAuthInstance();
-                auth2.signOut().then(function () {
-                    console.log("User signed out.");
-                });
-            }
-        </script>
     </head>
     <body>
         <div id="topbar">
