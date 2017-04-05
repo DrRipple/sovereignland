@@ -32,7 +32,7 @@
     		<h2>Don't have a nation? <a href="../new/nation.php">Sign Up</a></h2>
     	</div>
     	<div id="boxbottom">
-    		<form method="post" action="signin.php">
+    		<form action="../panel/index.php" method="post">
     			<input type="hidden" id="tokenbox" name="token">
     			<p>Nation Name</p>
     			<input type="text" name="nation">

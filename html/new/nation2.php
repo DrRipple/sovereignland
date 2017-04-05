@@ -26,7 +26,8 @@ if (isset($_POST["token"])) {
         die();
     }
 
-    $token_URL = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=" . $_POST["token"];
+    $token = test_input($_POST["token"]);
+    $token_URL = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=$token";
     $userID_json = file_get_contents("$token_URL");
     if (strpos($userID_json, "Invalid Value") !== false) {
         echo "Something went wrong with the authentication of your Google Account.";
