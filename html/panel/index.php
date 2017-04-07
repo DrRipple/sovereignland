@@ -1,44 +1,63 @@
 <!DOCTYPE html>
-<?php
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+<html>
+	<head>
+		<title>Sign In | Sovereign.Land</title>
+        <link rel="stylesheet" href="signin.css">
+        <link rel="icon" type="image/png" href="../favicon.png">
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
 
-function format_input($data) {
-	$data = test_input($data);
-	$data = strtolower($data);
-	$data = str_replace(" ", "_", $data);
-	return $data;
-}
+		<meta name="google-signin-client_id" content="1057622173913-bpi238tov8so32pbm4lj12u4elordq20.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script>
+            function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            }
 
-if (isset($_POST["token"])) {
-	$token = test_input($_POST["token"]);
-	$nation = format_input($_POST["nation"]);
-	$world = format_input($_POST["world"]);
+            function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                    console.log("User signed out.");
+                });
+            }
+        </script>
+    </head>
+    <body>
+    	<div id="boxtop">
+    		<h1>Sovereign.Land Sign-In</h1>
+    		<h2>Don't have a nation? <a href="../new/nation.php">Sign Up</a></h2>
+    	</div>
+    	<div id="boxbottom">
+    		<form action="nation.php" method="post">
+    			<input type="hidden" id="tokenbox" name="token">
+    			<p>Nation Name</p>
+    			<input type="text" name="nation">
 
-	$token_URL = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=$token";
-	$userID_json = file_get_contents("$token_URL");
-    if (strpos($userID_json, "Invalid Value") !== false) {
-        echo "Something went wrong with the authentication of your Google Account.";
-        die();
-    }
-    $userID_data = json_decode($userID_json, true);
-    $userID = md5($userID_data["sub"]);
+    			<p>World Name</p>
+    			<input type="text" name="world">
 
-    $basic_json = file_get_contents("../data/nations/$world/$nation/basic.json");
-    $basic_data = json_decode($basic_json, true);
-    if ($userID == $basic_data["userID"]) {
-    	setcookie("sl_signed_in", $nation);
-    	echo "Login success!";
-    } else {
-    	echo "Invalid login parameters. Please try again.";
-    	die();
-    }
-} else {
-	echo "Missing parameters.";
-	die();
-}
-?>
+    			<p id="g_signin_text">Google Sign-In</p>
+    			<div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    			<button id="finalbutton">View Nation Control</button>
+    		</form>
+    	</div>
+    	<script>
+    		function onSignIn(googleUser) {
+    			var profile = googleUser.getBasicProfile();
+    			var signinText = document.getElementById("g_signin_text");
+    			signinText.innerHTML = "Signed-In as: " + profile.getName();
+
+    			var proceedButton = document.getElementById("finalbutton");
+    			proceedButton.style.display = "block";
+
+    			var tokenBox = document.getElementById("tokenbox");
+    			tokenBox.value = googleUser.getAuthResponse().id_token;
+    		}
+    	</script>
+    </body>
+</html>

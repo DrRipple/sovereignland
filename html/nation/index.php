@@ -43,7 +43,7 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
                 <h1>
                     <a href="../">sovereign.land</a>
                 </h1>
-                <span id="signin"><a href="../signin">Sign In</a> or <a href="../new/nation.php">Sign Up</a></span>
+                <span id="signin"><a href="../panel">Sign In</a> or <a href="../new/nation.php">Sign Up</a></span>
             </div>
         </div>
         <div id="titlearea">
@@ -51,7 +51,7 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
                 <img src="<?php echo $basicdata['flagURL']?>">
                 <h1>
                     <a id="world" href="<?php echo $world_url ?>"><?php echo $world_display ?></a> /
-                    <?php echo $basicdata['name']?>
+                    <?php echo $basicdata["name"]?>
                 </h1>
             </div>
             <ul id="navbar">
