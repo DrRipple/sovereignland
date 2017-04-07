@@ -10,10 +10,16 @@ function test_input($data) {
     return $data;
 }
 
+function display_input($data) {
+    $data = str_replace("_", " ", $data);
+    $data = ucwords($data);
+    return $data;
+}
+
 if (isset($_GET["w"]) && isset($_GET["n"])) {
     $nation = test_input($_GET["n"]);
     $world = test_input($_GET["w"]);
-    $world_display = str_replace("_", " ", $world);
+    $world_display = display_input($world);
     $world_url = "../world?w=$world";
 
     $basicdata_json = file_get_contents("../data/nations/$world/$nation/basic.json");
@@ -27,6 +33,18 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
 } else {
     echo "No nation or world specified.";
     die();
+}
+
+if (isset($_COOKIE["sl_nation"])) {
+    $signedin_n = test_input($_COOKIE["sl_nation"]);
+    $signedin_w = test_input($_COOKIE["sl_world"]);
+    $signin_url = "../panel?n=$signedin_n&w=$signedin_w";
+
+    $signedin_n = display_input($signedin_n);
+    $signedin_w = display_input($signedin_w);
+} else {
+    $signedin_n = "Sign In";
+    $signin_url = "../panel";
 }
 ?>
 <html>
@@ -43,7 +61,7 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
                 <h1>
                     <a href="../">sovereign.land</a>
                 </h1>
-                <span id="signin"><a href="../panel">Sign In</a> or <a href="../new/nation.php">Sign Up</a></span>
+                <span id="signin"><a href="<?php echo $signin_url ?>"><?php echo $signedin_n ?></a></span>
             </div>
         </div>
         <div id="titlearea">

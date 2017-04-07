@@ -108,6 +108,7 @@ body {
 }
 
 #world, #world:visited {
+    text-transform: lowercase;
     font-size: 36px;
     text-decoration: none;
     color: #4f4f4f;

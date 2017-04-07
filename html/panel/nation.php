@@ -14,6 +14,14 @@ function format_input($data) {
 	return $data;
 }
 
+if (isset($_GET["sign"])) {
+    setcookie("sl_nation", "", time() - 3600);
+    setcookie("sl_world", "", time() - 3600);
+
+    echo "Signed out.";
+    die();
+}
+
 if (isset($_POST["token"])) {
 	$token = test_input($_POST["token"]);
 	$nation = format_input($_POST["nation"]);
@@ -31,7 +39,8 @@ if (isset($_POST["token"])) {
     $basic_json = file_get_contents("../data/nations/$world/$nation/basic.json");
     $basic_data = json_decode($basic_json, true);
     if ($userID == $basic_data["userID"]) {
-    	setcookie("sl_signed_in", $nation);
+    	setcookie("sl_nation", $nation, time() + (86400 * 30), "/");
+    	setcookie("sl_world", $world, time() + (86400 * 30), "/");
     } else {
     	echo "Invalid login parameters. Please try again.";
     	die();
@@ -55,7 +64,7 @@ if (isset($_POST["token"])) {
                 <h1>
                     <a href="../">sovereign.land</a>
                 </h1>
-                <span id="signin"><a href="../panel">Sign Out</a></span>
+                <span id="signin"><a href="?sign=out">Sign Out</a></span>
             </div>
         </div>
     </body>

@@ -1,4 +1,28 @@
 <!DOCTYPE html>
+<?php
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+function display_input($data) {
+    $data = str_replace("_", " ", $data);
+    $data = ucwords($data);
+    return $data;
+}
+
+if (isset($_COOKIE["sl_nation"])) {
+    $nation = display_input(test_input($_COOKIE["sl_nation"]));
+    $world = display_input(test_input($_COOKIE["sl_world"]));
+    $script = "document.forms['theform'].submit();";
+} else {
+    $nation = "";
+    $world = "";
+    $script = "";
+}
+?>
 <html>
 	<head>
 		<title>Sign In | Sovereign.Land</title>
@@ -32,13 +56,13 @@
     		<h2>Don't have a nation? <a href="../new/nation.php">Sign Up</a></h2>
     	</div>
     	<div id="boxbottom">
-    		<form action="nation.php" method="post">
+    		<form action="nation.php" method="post" id="theform">
     			<input type="hidden" id="tokenbox" name="token">
     			<p>Nation Name</p>
-    			<input type="text" name="nation">
+    			<input type="text" name="nation" value="<?php echo $nation ?>">
 
     			<p>World Name</p>
-    			<input type="text" name="world">
+    			<input type="text" name="world" value="<?php echo $world ?>">
 
     			<p id="g_signin_text">Google Sign-In</p>
     			<div class="g-signin2" data-onsuccess="onSignIn"></div>
@@ -57,6 +81,8 @@
 
     			var tokenBox = document.getElementById("tokenbox");
     			tokenBox.value = googleUser.getAuthResponse().id_token;
+
+                <?php echo $script ?>;
     		}
     	</script>
     </body>
