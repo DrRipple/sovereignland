@@ -15,7 +15,7 @@ if (isset($_POST["token"])) {
         die();
     }
     $userID_data = json_decode($userID_json, true);
-    $userID = $userID_data["sub"];
+    $userID = md5($userID_data["sub"]);
 
     $name = test_input($_POST["name"]);
     $name = strtolower($name);
