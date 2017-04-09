@@ -18,6 +18,7 @@ if (isset($_POST["token"])) {
     $userID = md5($userID_data["sub"]);
 
     $name = test_input($_POST["name"]);
+
     $name = strtolower($name);
     $name = str_replace(" ", "_", $name);
     $exist_testing = file_get_contents("../data/worlds/$name.json");
@@ -25,6 +26,11 @@ if (isset($_POST["token"])) {
         echo "The region $name already exists.";
         die();
     }
+
+    $wiki_text = "# Welcome to $name!\n\nIf you are the world owner, you can change this message in the world panel.";
+    $wiki_file = fopen("../data/worlds/$name.md", "w");
+    fwrite($wiki_file, $wiki_text);
+    fclose($wiki_file);
 
     $dirpath = "../data/nations/$name";
     mkdir($dirpath, 0755, true);
@@ -55,6 +61,8 @@ if (isset($_POST["token"])) {
     $code_file = fopen("../data/worldcodes/$code_hash.json", "w");
     fwrite($code_file, $code_json);
     fclose($code_file);
+} else {
+    $code = "1234567890";
 }
 ?>
 <html>
@@ -74,7 +82,14 @@ if (isset($_POST["token"])) {
                 </div>
             </div>
         </div>
-            <p>Your world code (save this): <?php echo $code ?></p>
-        </form>
+        <div id="content">
+            <p>Your world has successfully been created.</p>
+            <h3>Permanent Codes</h3>
+            <p>Save these somewhere; you will not be able to retrive them later.</p>
+            <ul>
+                <li>World Code: <code><?php echo $code ?></code></li>
+                <li>Invite Link: <code>http://sovereign.land/new/nation.php?w=<?php echo $code ?></code></li>
+            </ul>
+        </div>
     </body>
 </html>
