@@ -36,10 +36,10 @@ if (isset($_POST["token"])) {
     $userID_data = json_decode($userID_json, true);
     $userID = md5($userID_data["sub"]);
 
-    $dirname = test_input($_POST["name"]);
-    $dirname = strtolower($dirname);
-    $dirname = str_replace(" ", "_", $dirname);
-    $dirpath = "../data/nations/$world/" . $dirname;
+    $name = test_input($_POST["name"]);
+    $name = strtolower($name);
+    $name = str_replace(" ", "_", $name);
+    $dirpath = "../data/nations/$world/" . $name;
     mkdir($dirpath, 0755, true);
 
     $officialtitle = test_input($_POST["official"]);
@@ -84,14 +84,18 @@ if (isset($_POST["token"])) {
             </div>
         </div>
     	<form action="nation3.php" method="post">
+            <input type="hidden" name="token" id="tokenbox">
+            <input type="hidden" name="nation" value="<?php echo $name ?>">
+            <input type="hidden" name="world" value="<?php echo $world ?>">
+
             <span class="textfield">
                 <p>Land Area (km<sup>2</sup>)</p>
-                <input type="number" name="civ_area">
+                <input type="number" name="geo_area">
                 <p class="helptext">Enter the total land area of your country.</p>
             </span>
             <span class="textfield">
                 <p>Population Density (people/km<sup>2</sup>)</p>
-                <input type="number" name="civ_density">
+                <input type="number" name="geo_density">
                 <p class="helptext">Enter the overall population density of your country.</p>
             </span>
 
@@ -142,7 +146,7 @@ if (isset($_POST["token"])) {
                 <input type="number" name="bud_trans" value="10" onchange="drawChart()" class="budgetValue">
 
                 <p>Business</p>
-                <input type="number" name="bud_bus" value="10" onchange="drawChart()" class="budgetValue">
+                <input type="number" name="bud_busi" value="10" onchange="drawChart()" class="budgetValue">
 
                 <p>Administration</p>
                 <input type="number" name="bud_admin" value="10" onchange="drawChart()" class="budgetValue">
@@ -159,7 +163,7 @@ if (isset($_POST["token"])) {
             <div>
                 <p><b>Wiki Entry</b></p>
                 <p>Formatted using <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Markdown</a>.</p>
-                <textarea id="wiki"># <?php echo $officialtitle ?></textarea>
+                <textarea id="wiki" name="wiki"># <?php echo $officialtitle ?></textarea>
             </div>
 	    	
             <hr>
@@ -170,8 +174,7 @@ if (isset($_POST["token"])) {
             </span>
 
             <span class="textfield" id="finalbutton">
-                <p>By clicking the button below, you confirm that you have read and will abide by the <a href="#" target="_blank">Terms and Conditions</a>.</p>
-                <button>Proceed to Next Step</button>
+                <button>Create My Nation</button>
             </span>
     	</form>
 
