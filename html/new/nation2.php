@@ -124,28 +124,34 @@ if (isset($_POST["token"])) {
                 <p style="font-size: 14px; color: #777">Adjust the points to change the percent budget allocated to each department. Only the percentages will be recorded.</p>
 
                 <p>Defense</p>
-                <input type="number" name="bud_def" value="10" onchange="updateBudgetChart()" class="budgetValue">
+                <input type="number" name="bud_def" value="10" onchange="drawChart()" class="budgetValue">
 
                 <p>Healthcare</p>
-                <input type="number" name="bud_health" value="10" onchange="updateBudgetChart()" class="budgetValue">
+                <input type="number" name="bud_health" value="10" onchange="drawChart()" class="budgetValue">
 
                 <p>Education</p>
-                <input type="number" name="bud_edu" value="10" onchange="updateBudgetChart()" class="budgetValue">
+                <input type="number" name="bud_edu" value="10" onchange="drawChart()" class="budgetValue">
 
                 <p>Energy</p>
-                <input type="number" name="bud_ene" value="10" onchange="updateBudgetChart()" class="budgetValue">
+                <input type="number" name="bud_ene" value="10" onchange="drawChart()" class="budgetValue">
 
                 <p>Science</p>
-                <input type="number" name="bud_sci" value="10" onchange="updateBudgetChart()" class="budgetValue">
+                <input type="number" name="bud_sci" value="10" onchange="drawChart()" class="budgetValue">
 
                 <p>Transportation</p>
-                <input type="number" name="bud_trans" value="10" onchange="updateBudgetChart()" class="budgetValue">
+                <input type="number" name="bud_trans" value="10" onchange="drawChart()" class="budgetValue">
 
                 <p>Business</p>
-                <input type="number" name="bud_bus" value="10" onchange="updateBudgetChart()" class="budgetValue">
+                <input type="number" name="bud_bus" value="10" onchange="drawChart()" class="budgetValue">
 
                 <p>Administration</p>
-                <input type="number" name="bud_admin" value="10" onchange="updateBudgetChart()" class="budgetValue">
+                <input type="number" name="bud_admin" value="10" onchange="drawChart()" class="budgetValue">
+
+                <p>Welfare</p>
+                <input type="number" name="bud_wel" value="10" onchange="drawChart()" class="budgetValue">
+
+                <p>Security</p>
+                <input type="number" name="bud_sec" value="10" onchange="drawChart()" class="budgetValue">
             </div>
 
             <hr>
@@ -174,42 +180,22 @@ if (isset($_POST["token"])) {
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                    ["Department", "% Allocated"],
-                    ["Defense", 10],
-                    ["Healthcare", 10],
-                    ["Education", 10],
-                    ["Energy", 10],
-                    ["Science", 10],
-                    ["Transportation", 10],
-                    ["Business", 10],
-                    ["Administration", 10]
-                ]);
-
-                var options = {
-                    title: "National Budget"
-                };
-
-                var chartElement = document.getElementById("piechart");
-                var chart = new google.visualization.PieChart(chartElement);
-                chart.draw(data, options);
-            }
-
-            function updateBudgetChart() {
                 var valueElements = document.getElementsByClassName("budgetValue");
                 var values = [];
                 for (var i = 0; i < valueElements.length; i++) values.push(parseInt(valueElements[i].value));
 
                 var data = google.visualization.arrayToDataTable([
                     ["Department", "% Allocated"],
-                    ["Defense", values[0]],
+                    ["Military", values[0]],
                     ["Healthcare", values[1]],
                     ["Education", values[2]],
                     ["Energy", values[3]],
                     ["Science", values[4]],
                     ["Transportation", values[5]],
                     ["Business", values[6]],
-                    ["Administration", values[7]]
+                    ["Administration", values[7]],
+                    ["Welfare", values[8]],
+                    ["Security", values[9]]
                 ]);
 
                 var options = {

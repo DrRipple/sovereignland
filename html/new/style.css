@@ -155,6 +155,7 @@ button:focus {
 
 #wiki:hover, #wiki:focus {
 	border-color: #4f4f4f;
+	outline: none;
 }
 
 #budget p {
@@ -165,4 +166,8 @@ button:focus {
 	float: right;
 	width: 520px;
 	height: 500px;
+}
+
+#budget input[type=number]:hover {
+	border-color: #4f4f4f;
 }
