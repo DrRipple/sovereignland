@@ -18,7 +18,7 @@ if (isset($_POST["token"])) {
     $userID_data = json_decode($userID_json, true);
     $userID = md5($userID_data["sub"]);
 
-    $name = test_input($_POST["name"]);
+    $nation = test_input($_POST["nation"]);
     $world = test_input($_POST["world"]);
     $dirpath = "../data/nations/$world/$nation";
     if (!file_exists("$dirpath/basic.json")) {
@@ -43,38 +43,38 @@ if (isset($_POST["token"])) {
 
         $econ_sys = test_input($_POST["econ_sys"]);
         $econ_ptax = intval(test_input($_POST["econ_ptax"]));
-        $econ_ctax = intval(text_input($_POST["econ_ctax"]));
+        $econ_ctax = intval(test_input($_POST["econ_ctax"]));
         if ((0 > $econ_ptax) || ($econ_ptax > 100) || (0 > $econ_ctax) || ($econ_ctax > 100)) {
-            echo "One or more of your tax values was not within 0-100."
+            echo "One or more of your tax values was not within 0-100.";
             die();
         } else {
             $econ_data = array(
-                "ptax" => $econ_ptax,
-                "ctax" => $econ_ctax
+                "ptax" => $econ_ptax / 100,
+                "ctax" => $econ_ctax / 100
             );
         }
 
         $bud_list = array(
-            intval(text_input($_POST["bud_def"])),
-            intval(text_input($_POST["bud_health"])),
-            intval(text_input($_POST["bud_edu"])),
-            intval(text_input($_POST["bud_ene"])),
-            intval(text_input($_POST["bud_sci"])),
-            intval(text_input($_POST["bud_trans"])),
-            intval(text_input($_POST["bud_busi"])),
-            intval(text_input($_POST["bud_admin"])),
-            intval(text_input($_POST["bud_wel"])),
-            intval(text_input($_POST["bud_sec"]))
+            intval(test_input($_POST["bud_def"])),
+            intval(test_input($_POST["bud_health"])),
+            intval(test_input($_POST["bud_edu"])),
+            intval(test_input($_POST["bud_ene"])),
+            intval(test_input($_POST["bud_sci"])),
+            intval(test_input($_POST["bud_trans"])),
+            intval(test_input($_POST["bud_busi"])),
+            intval(test_input($_POST["bud_admin"])),
+            intval(test_input($_POST["bud_wel"])),
+            intval(test_input($_POST["bud_sec"]))
         );
         $total = 0;
         $bud_data = array();
-        for ($i = 0; $i < count($bud_list); $i++) $total += $bud_list[i];
-        for ($i = 0; $i < count($bud_list); $i++) array_push($bud_data, $bud_list[i] / $total);
+        for ($i = 0; $i < count($bud_list); $i++) $total += $bud_list[$i];
+        for ($i = 0; $i < count($bud_list); $i++) array_push($bud_data, $bud_list[$i] / $total);
 
         $phase2_data = array(
-            "geo" => $geo_data;
-            "econ" => $econ_data;
-            "budget" => $bud_data;
+            "geo" => $geo_data,
+            "econ" => $econ_data,
+            "budget" => $bud_data
         );
         $phase2_json = json_encode($phase2_data);
         $phase2_file = fopen("$dirpath/phase2.json", "w");
