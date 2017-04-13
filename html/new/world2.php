@@ -39,7 +39,8 @@ if (isset($_POST["token"])) {
         "userID" => $userID,
         "banner" => test_input($_POST["flag"]),
         "sharing" => test_input($_POST["sharing"]),
-        "desc" => test_input($_POST["desc"])
+        "desc" => test_input($_POST["desc"]),
+        "map" => test_input($_POST["map"])
     );
     $info_json = json_encode($info_data);
     $info_file = fopen("../data/worlds/$name.json", "w");

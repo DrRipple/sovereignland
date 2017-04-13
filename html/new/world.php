@@ -52,6 +52,10 @@
                 <img src="../data/flag.png" id="flagpreview">
             </span>
 
+            <span class="textfield">
+                <p>Map URL</p>
+                <input type="text" name="map">
+                <p class="helptext">Enter the sharing URL of your world's map. You may leave this blank and add it later.</p>
             <hr>
 
             <span class="textfield">
