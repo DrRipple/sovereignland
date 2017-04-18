@@ -30,6 +30,8 @@ if (isset($_GET["w"])) {
     $wikifile = "../data/worlds/$world.md";
     $wikidata = file_get_contents($wikifile);
 
+    //Resident nations list
+
     $residents = scandir("../data/nations/$world/");
     $residents_html = "<ul>";
     for ($i = 2; $i < count($residents); $i++) {
@@ -38,6 +40,20 @@ if (isset($_GET["w"])) {
         $residents_html .= "<li><a href='$res_link'>$res_name</a></li>";
     }
     $residents_html .= "</ul>";
+
+    //Event posts
+
+    $posts = scandir("../data/posts/$world/");
+    $posts_html = "";
+    for ($i = 2; $i < count($posts) && $i < 7; $i++) {
+        $timestamp_unix = substr($posts[$i], 0, strlen($posts[$i]) - 2);
+        $timestamp_show = date("d/m/Y H:i:s", $timestamp_unix);
+        $time_html = "<span class='timestamp'>Posted at $timestamp_show</span>";
+        $post_data = file_get_contents("../data/posts/$world/" . $posts[$i]);
+        $post_html = $Parsedown->text($post_data);
+
+        $posts_html .= "<div class='post'>$time_html<div class='postcontent'>$post_html</div></div>";
+    }
 } else {
     echo "No nation or world specified.";
     die();
@@ -80,7 +96,7 @@ if (isset($_COOKIE["sl_nation"])) {
             </div>
             <ul id="navbar">
                 <li class="active" id="wiki_tab"><img src="../data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Wiki Entry</a></li>
-                <li><img src="../data/icons/nation_news.png"><a href="#">Latest News</a></li>
+                <li id="posts_tab"><img src="../data/icons/nation_news.png"><a href="#" onclick="showTab('posts')">Latest News</a></li>
                 <li id="nations_tab"><img src="../data/icons/nation_flag.png"><a href="#" onclick="showTab('nations')">Nations</a></li>
                 <li><img src="../data/icons/nation_map.png"><a href="<?php echo $world_data['map'] ?>" target="_blank">Map</a></li>
             </ul>
@@ -88,6 +104,11 @@ if (isset($_COOKIE["sl_nation"])) {
 
         <div id="wiki" class="content">
             <?php echo $Parsedown->text($wikidata) ?>
+        </div>
+
+        <div id="posts" class="content">
+            <h3>Most Recent Events</h3>
+            <?php echo $posts_html ?>
         </div>
 
         <div id="nations" class="content">

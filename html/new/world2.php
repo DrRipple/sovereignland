@@ -8,6 +8,8 @@ function test_input($data) {
 }
 
 if (isset($_POST["token"])) {
+    $t = time();
+
     $token_URL = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=" . $_POST["token"];
     $userID_json = file_get_contents("$token_URL");
     if (strpos($userID_json, "Invalid Value") !== false) {
@@ -18,9 +20,9 @@ if (isset($_POST["token"])) {
     $userID = md5($userID_data["sub"]);
 
     $name = test_input($_POST["name"]);
-
     $name = strtolower($name);
     $name = str_replace(" ", "_", $name);
+
     $exist_testing = file_get_contents("../data/worlds/$name.json");
     if ($exist_testing !== false) {
         echo "The region $name already exists.";
@@ -32,8 +34,15 @@ if (isset($_POST["token"])) {
     fwrite($wiki_file, $wiki_text);
     fclose($wiki_file);
 
-    $dirpath = "../data/nations/$name";
-    mkdir($dirpath, 0755, true);
+    $nations_path = "../data/nations/$name";
+    $posts_path = "../data/posts/$name";
+    mkdir($nations_path, 0755, true);
+    mkdir($posts_path, 0755, true);
+
+    $post_text = "# This is the first event post.\n\nResident nations can write their own posts about events.";
+    $post_file = fopen("../data/posts/$name/" . $t . ".md", "w");
+    fwrite($post_file, $post_text);
+    fclose($post_file);
 
     $info_data = array(
         "userID" => $userID,

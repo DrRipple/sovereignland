@@ -143,3 +143,19 @@ a:hover {text-decoration: none}
     padding: 0 18px 18px 0;
     display: inline-block;
 }
+
+.post {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.timestamp {
+    display: block;
+    width: 100%;
+    padding: 8px;
+}
+
+.postcontent {
+    border-top: 1px solid #ccc;
+    padding: 8px;
+}
