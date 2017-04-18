@@ -31,6 +31,13 @@ if (isset($_GET["w"])) {
     $wikidata = file_get_contents($wikifile);
 
     $residents = scandir("../data/nations/$world/");
+    $residents_html = "<ul>";
+    for ($i = 2; $i < count($residents); $i++) {
+        $res_link = "../nation?w=$world&n=" . $residents[$i];
+        $res_name = display_input($residents[$i]);
+        $residents_html .= "<li><a href='$res_link'>$res_name</a></li>";
+    }
+    $residents_html .= "</ul>";
 } else {
     echo "No nation or world specified.";
     die();
@@ -84,7 +91,8 @@ if (isset($_COOKIE["sl_nation"])) {
         </div>
 
         <div id="nations" class="content">
-            <?php for ($i = 2; $i < count($residents); $i++) print $residents[$i] . "<br>" ?>
+            <h3>List of Nations</h3>
+            <?php echo $residents_html ?>
         </div>
 
         <script>

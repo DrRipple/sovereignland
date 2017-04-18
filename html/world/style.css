@@ -28,9 +28,7 @@ body {
     text-decoration: none;
 }
 
-#topbar h1 a:hover {
-    text-decoration: underline;
-}
+#topbar h1 a:hover {text-decoration: underline;}
 
 #signin {
     display: inline-block;
@@ -113,9 +111,7 @@ body {
     font-weight: 400;
 }
 
-#nations, #map {
-    display: none;
-}
+#nations, #posts {display: none;}
 
 #map {
     position: fixed;
@@ -128,4 +124,22 @@ body {
     border: none;
     width: 100%;
     height: 100%;
+}
+
+h3 {
+    text-transform: uppercase;
+    font-size: 26px;
+}
+
+a, a:visited {color: #3472e9}
+a:hover {text-decoration: none}
+
+#nations ul {
+    list-style: none;
+    padding: 0;
+}
+
+#nations li {
+    padding: 0 18px 18px 0;
+    display: inline-block;
 }
