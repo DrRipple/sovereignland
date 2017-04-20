@@ -28,23 +28,14 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
         die();
     }
     $basicdata = json_decode($basicdata_json, true);
-    $wikifile = "../data/nations/$world/$nation/wiki.md";
-    $wikidata = file_get_contents($wikifile);
+    $filepath = "../data/nations/$world/$nation";
+    $wikidata = file_get_contents("$filepath/wiki.md");
+
+    $p2_json = file_get_contents("$filepath/phase2.json");
+    $p2_data = json_decode($p2_json, true);
 } else {
     echo "No nation or world specified.";
     die();
-}
-
-if (isset($_COOKIE["sl_nation"])) {
-    $signedin_n = test_input($_COOKIE["sl_nation"]);
-    $signedin_w = test_input($_COOKIE["sl_world"]);
-    $signin_url = "../panel?n=$signedin_n&w=$signedin_w";
-
-    $signedin_n = display_input($signedin_n);
-    $signedin_w = display_input($signedin_w);
-} else {
-    $signedin_n = "Sign In";
-    $signin_url = "../panel";
 }
 ?>
 <html>
@@ -61,7 +52,7 @@ if (isset($_COOKIE["sl_nation"])) {
                 <h1>
                     <a href="../">sovereign.land</a>
                 </h1>
-                <span id="signin"><a href="<?php echo $signin_url ?>"><?php echo $signedin_n ?></a></span>
+                <span id="signin"><a href="../panel">Nation Panel</a></span>
             </div>
         </div>
         <div id="titlearea">
@@ -73,32 +64,59 @@ if (isset($_COOKIE["sl_nation"])) {
                 </h1>
             </div>
             <ul id="navbar">
-                <li class="active"><img src="../data/icons/nation_wiki.png"><a href="#">Wiki Entry</a></li>
-                <li><img src="../data/icons/nation_news.png"><a href="#">Latest News</a></li>
-                <li><img src="../data/icons/nation_info.png"><a href="#">Information</a></li>
-                <li><img src="../data/icons/nation_stats.png"><a href="#">Statistics</a></li>
-                <li><img src="../data/icons/nation_friends.png"><a href="#">Friends</a></li>
+                <li id="wiki_tab" class="active"><img src="../data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Wiki Entry</a></li>
+                <li id="news_tab"><img src="../data/icons/nation_news.png"><a href="#" onclick="showTab('news')">Latest News</a></li>
+                <li id="info_tab"><img src="../data/icons/nation_info.png"><a href="#" onclick="showTab('info')">Information</a></li>
+                <li id="stats_tab"><img src="../data/icons/nation_stats.png"><a href="#" onclick="showTab('stats')">Statistics</a></li>
+                <li id="friends_tab"><img src="../data/icons/nation_friends.png"><a href="#" onclick="showTab('friends')">Friends</a></li>
             </ul>
         </div>
-        <div id="wiki">
+
+        <div id="wiki" class="content">
             <?php echo $Parsedown->text($wikidata) ?>
         </div>
-        <div id="boxes">
-            <div id="vitals" class="box">
-                <span class="boxtitle">Vitals</span>
-                <ul>
-                    <li><b>World: </b>Norrland</li>
-                    <li><b>Population: </b>19,802,411</li>
-                    <li><b>Unemployment: </b><span class="greatstat">2.9%</span></li>
-                    <li><b>Happiness: </b><span class="greatstat">7.504</span></li>
-                    <li><b>Development: </b><span class="greatstat">0.951</span></li>
-                    <li><a href="#">More Statistics</a></li>
-                </ul>
-            </div>
-            <div id="overview" class="box">
-                <span class="boxtitle">Overview</span>
-                <p>Testing Information</p>
-            </div>
+
+        <div id="news" class="content">
+            <h3>Coming Soon</h3>
+            <p>This feature is not yet available in the Alpha version.</p>
         </div>
+
+        <div id="info" class="content">
+            <h3>Nation Information</h3>
+            <ul>
+                <li><b>Total Area</b>: <?php echo $p2_data["geo"]["area"] ?> sq km</li>
+                <li><b>Population Density</b>: <?php echo $p2_data["geo"]["density"] ?> people/sq km</li>
+                <li><b>Population</b>: <?php echo $p2_data["geo"]["area"] * $p2_data["geo"]["density"] ?> people</li>
+            </ul>
+            <ul>
+                <li><b>Personal Income Tax</b>: <?php echo $p2_data["econ"]["ptax"] * 100 ?>%</li>
+                <li><b>Corporate Income Tax</b>: <?php echo $p2_data["econ"]["ctax"] * 100 ?>%</li>
+                <li>More forms of taxation coming soon.</li>
+            </ul>
+        </div>
+        
+        <div id="stats" class="content">
+            <h3>Budget Statistics</h3>
+        </div>
+
+        <div id="friends" class="content">
+            <h3>Friends and Enemies</h3>
+        </div>
+
+        <script>
+            function showTab(section) {
+                var theSection = document.getElementById(section);
+                var sectionTab = document.getElementById(section + "_tab");
+
+                var sections = document.getElementsByClassName("content");
+                var activeTabs = document.getElementsByClassName("active");
+
+                for (var i = 0; i < sections.length; i++) sections[i].style.display = "none";
+                activeTabs[0].className = "";
+
+                theSection.style.display = "block";
+                sectionTab.className = "active";
+            }
+        </script>
     </body>
 </html>

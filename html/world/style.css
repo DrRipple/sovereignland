@@ -113,19 +113,6 @@ body {
 
 #nations, #posts {display: none;}
 
-#map {
-    position: fixed;
-    top: 244px;
-    left: 0;
-    width: 100%;
-}
-
-#map iframe {
-    border: none;
-    width: 100%;
-    height: 100%;
-}
-
 h3 {
     text-transform: uppercase;
     font-size: 26px;
