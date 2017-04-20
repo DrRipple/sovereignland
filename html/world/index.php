@@ -46,7 +46,7 @@ if (isset($_GET["w"])) {
     $posts = scandir("../data/posts/$world/");
     $posts_html = "";
     for ($i = 2; $i < count($posts) && $i < 7; $i++) {
-        $timestamp_unix = substr($posts[$i], 0, strlen($posts[$i]) - 2);
+        $timestamp_unix = substr($posts[$i], 0, 10);
         $timestamp_show = date("d/m/Y H:i:s", $timestamp_unix);
         $time_html = "<span class='timestamp'>Posted at $timestamp_show</span>";
         $post_data = file_get_contents("../data/posts/$world/" . $posts[$i]);
@@ -57,18 +57,6 @@ if (isset($_GET["w"])) {
 } else {
     echo "No nation or world specified.";
     die();
-}
-
-if (isset($_COOKIE["sl_nation"])) {
-    $signedin_n = test_input($_COOKIE["sl_nation"]);
-    $signedin_w = test_input($_COOKIE["sl_world"]);
-    $signin_url = "../panel?n=$signedin_n&w=$signedin_w";
-
-    $signedin_n = display_input($signedin_n);
-    $signedin_w = display_input($signedin_w);
-} else {
-    $signedin_n = "Sign In";
-    $signin_url = "../panel";
 }
 ?>
 <html>
@@ -85,7 +73,7 @@ if (isset($_COOKIE["sl_nation"])) {
                 <h1>
                     <a href="../">sovereign.land</a>
                 </h1>
-                <span id="signin"><a href="<?php echo $signin_url ?>"><?php echo $signedin_n ?></a></span>
+                <span id="signin"><a href="../panel">Nation Panel</a></span>
             </div>
         </div>
 
