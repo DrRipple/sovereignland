@@ -39,7 +39,7 @@ if (isset($_GET["w"])) {
             <span class="textfield">
                 <p>World Code</p>
                 <input type="text" name="world" value="<?php echo $world ?>">
-                <p class="helptext">Enter the code for the world you wish to join. Browse worlds <a href="#" target="_blank">here</a>.</p>
+                <p class="helptext">Enter the code for the world you wish to join. The world creator should have given you one.</p>
             </span>
     		
     		<span class="textfield">
@@ -84,10 +84,13 @@ if (isset($_GET["w"])) {
     		</span>
 
 	    	<span class="textfield" id="finalbutton">
-	    		<p>By clicking the button below, you confirm that you have read and will abide by the <a href="#" target="_blank">Terms and Conditions</a>.</p>
+	    		<p>By clicking the button below, you confirm that you have read and will abide by the <a href="../terms" target="_blank">Terms and Conditions</a>.</p>
 	    		<button>Proceed to Next Step</button>
 	    	</span>
     	</form>
+
+        <div style="height: 300px"></div>
+        <div id="footer" style="position: fixed; bottom: 0; width: 100%; padding: 30px 40px; background: #eee">This game is in the alpha stage. <a href="../terms">Terms and Privacy Policy</a></div>
 
     	<script>
     		function flagPreview() {

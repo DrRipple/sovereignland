@@ -1,33 +1,75 @@
-<!DOCTYPE html>
 <html>
 	<head>
-		<title>Sovereign.Land</title>
+		<title>Create Nation | Sovereign.Land</title>
 		<link rel="icon" type="image/png" href="favicon.png">
+		<link rel="stylesheet" href="style.css">
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
 
-		<meta name="google-signin-client_id" content="1057622173913-bpi238tov8so32pbm4lj12u4elordq20.apps.googleusercontent.com">
-		<script src="https://apis.google.com/js/platform.js" async defer></script>
-		<script>
-			function onSignIn(googleUser) {
-			  	var profile = googleUser.getBasicProfile();
-			  	console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-			  	console.log('Name: ' + profile.getName());
-			  	console.log('Image URL: ' + profile.getImageUrl());
-			  	console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-			}
+        <meta name="google-signin-client_id" content="1057622173913-bpi238tov8so32pbm4lj12u4elordq20.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+    </head>
+    <body>
+    	<div id="topbar">
+            <div id="topcontainer">
+                <div id="desc">
+    				<h1>Sovereign.Land</h1>
+    				<h2>Create a <a href="new/nation.php">nation</a> or <a href="new/world.php">world</a></h2>
+                </div>
+            </div>
+        </div>
+    	
+    	<form action="nation" method="get">
+    		<h3>Nation Viewer</h3>
+    		<span class="textfield">
+    			<p>Nation Name</p>
+    			<input type="text" name="n">
+    			<p class="helptext">Enter the name of the nation you would like to view.</p>
+    		</span>
+    		<span class="textfield">
+    			<p>World Name</p>
+    			<input type="text" name="w">
+    			<p class="helptext">Enter the name of the world of the nation you would like to view.</p>
+    		</span>
+    		<span class="textfield">
+    			<button>View Nation</button>
+    		</span>
+    	</form>
 
-			function signOut() {
-				var auth2 = gapi.auth2.getAuthInstance();
-				auth2.signOut().then(function () {
-					console.log("User signed out.");
-				});
-			}
-		</script>
-	</head>
-	<body>
-		<h1>Hello, world!</h1>
-		<p>Sovereign.land is currently in development.</p>
-		<p>Nation simulator game by Solborg.</p>
-		<div class="g-signin2" data-onsuccess="onSignIn"></div>
-		<a href="#" onclick="signOut();">Sign Out</a>
-	</body>
+    	<form action="world" method="get">
+    		<h3>World Viewer</h3>
+    		<span class="textfield">
+    			<p>World Name</p>
+    			<input type="text" name="w">
+    			<p class="helptext">Enter the name of the world you would like to view.</p>
+    		</span>
+    		<span class="textfield">
+    			<button>View World</button>
+    		</span>
+    	</form>
+
+        <div style="height: 300px"></div>
+        <div id="footer" style="position: fixed; bottom: 0; width: 100%; padding: 30px 40px; background: #eee">This game is in the alpha stage. <a href="../terms">Terms and Privacy Policy</a></div>
+
+    	<script>
+    		function flagPreview() {
+    			var flagURL = document.getElementById("flag_url").value;
+    			var previewBox = document.getElementById("flagpreview");
+    			if (flagURL == "") flagURL = "../data/flag.png";
+    			previewBox.src = flagURL;
+    		}
+
+    		function onSignIn(googleUser) {
+    			var profile = googleUser.getBasicProfile();
+    			var signinText = document.getElementById("g_signin_text");
+    			signinText.innerHTML = "Signed-In as: " + profile.getName();
+
+    			var proceedButton = document.getElementById("finalbutton");
+    			proceedButton.style.display = "block";
+
+    			var tokenBox = document.getElementById("tokenbox");
+    			tokenBox.value = googleUser.getAuthResponse().id_token;
+    		}
+    	</script>
+    </body>
 </html>

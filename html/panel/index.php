@@ -151,6 +151,9 @@ if (isset($_GET["sign"])) {
             </form>
         </div>
 
+        <div style="height: 300px"></div>
+        <div id="footer" style="position: fixed; bottom: 0; width: 100%; padding: 30px 40px; background: #eee">This game is in the alpha stage. <a href="../terms">Terms and Privacy Policy</a></div>
+
     	<script>
     		function onSignIn(googleUser) {
     			var profile = googleUser.getBasicProfile();
