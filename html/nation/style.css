@@ -139,3 +139,8 @@ a:hover {text-decoration: none}
 }
 
 #info li {padding: 6px 0;}
+
+#piechart { 
+    width: 900px;
+    height: 500px;
+}

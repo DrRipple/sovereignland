@@ -45,6 +45,8 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
         <link rel="icon" type="image/png" href="../favicon.png">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
     <body>
         <div id="topbar">
@@ -97,6 +99,7 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
         
         <div id="stats" class="content">
             <h3>Budget Statistics</h3>
+            <div id="piechart"></div>
         </div>
 
         <div id="friends" class="content">
@@ -104,6 +107,33 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
         </div>
 
         <script>
+            google.charts.load("current", {"packages": ["corechart"]});
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ["Department", "% Allocated"],
+                    ["Military", <?php echo $p2_data["budget"][0] ?>],
+                    ["Healthcare", <?php echo $p2_data["budget"][1] ?>],
+                    ["Education", <?php echo $p2_data["budget"][2] ?>],
+                    ["Energy", <?php echo $p2_data["budget"][3] ?>],
+                    ["Science", <?php echo $p2_data["budget"][4] ?>],
+                    ["Transportation", <?php echo $p2_data["budget"][5] ?>],
+                    ["Business", <?php echo $p2_data["budget"][6] ?>],
+                    ["Administration", <?php echo $p2_data["budget"][7] ?>],
+                    ["Welfare", <?php echo $p2_data["budget"][8] ?>],
+                    ["Security", <?php echo $p2_data["budget"][9] ?>]
+                ]);
+
+                var options = {
+                    title: "National Budget"
+                };
+
+                var chartElement = document.getElementById("piechart");
+                var chart = new google.visualization.PieChart(chartElement);
+                chart.draw(data, options);
+            }
+
             function showTab(section) {
                 var theSection = document.getElementById(section);
                 var sectionTab = document.getElementById(section + "_tab");
