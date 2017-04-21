@@ -77,7 +77,7 @@ if (isset($_GET["sign"])) {
             <div id="nationtitle">
                 <img src="<?php echo $basicdata['flagURL']?>">
                 <h1>
-                    <?php echo $basicdata["name"]?>
+                    <?php echo display_input($nation) ?>
                     <span class="regular">(Editing)</span> 
                 </h1>
             </div>

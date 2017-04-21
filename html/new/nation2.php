@@ -46,7 +46,7 @@ if (isset($_POST["token"])) {
 
     $basics_data = array(
         "userID" => $userID,
-        "name" => test_input($_POST["name"]),
+        "founded" => $t;
         "official" => $officialtitle,
         "ccode" => test_input($_POST["currency"]),
         "cvalue" => test_input($_POST["cvalue"]),

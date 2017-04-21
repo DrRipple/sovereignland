@@ -59,10 +59,10 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
         </div>
         <div id="titlearea">
             <div id="nationtitle">
-                <img src="<?php echo $basicdata['flagURL']?>">
+                <img src="<?php echo $basicdata['flagURL'] ?>">
                 <h1>
                     <a id="world" href="<?php echo $world_url ?>"><?php echo $world_display ?></a> /
-                    <?php echo $basicdata["name"]?>
+                    <?php echo display_input($nation) ?>
                 </h1>
             </div>
             <ul id="navbar">
