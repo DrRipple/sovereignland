@@ -33,6 +33,29 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
 
     $p2_json = file_get_contents("$filepath/phase2.json");
     $p2_data = json_decode($p2_json, true);
+
+    //Friends and enemies listing
+
+    $rel_json = file_get_contents("$filepath/relations.json");
+    $rel_data = json_decode($rel_json, true);
+
+    $friends = $rel_data["friends"];
+    $friends_html = "<ul>";
+    for ($i = 0; $i < count($friends); $i++) {
+        $friend_link = "../nation?w=$world&n=" . $friends[$i];
+        $friend_name = display_input($friends[$i]);
+        $friends_html .= "<li><a href='$friend_link'>$friend_name</a></li>";
+    }
+    $friends_html .= "</ul>";
+
+    $enemies = $rel_data["enemies"];
+    $enemies_html = "<ul>";
+    for ($i = 0; $i < count($enemies); $i++) {
+        $enemy_link = "../nation?w=$world&n=" . $enemies[$i];
+        $enemy_name = display_input($enemies[$i]);
+        $enemies_html .= "<li><a href='$enemy_link'>$enemy_name</a></li>";
+    }
+    $enemies_html .= "</ul>";
 } else {
     echo "No nation or world specified.";
     die();
@@ -103,7 +126,10 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
         </div>
 
         <div id="friends" class="content">
-            <h3>Friends and Enemies</h3>
+            <h3>List of Friends</h3>
+            <?php echo $friends_html ?>
+            <h3>List of Enemies</h3>
+            <?php echo $enemies_html ?>
         </div>
 
         <script>

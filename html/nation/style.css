@@ -144,3 +144,13 @@ a:hover {text-decoration: none}
     width: 900px;
     height: 500px;
 }
+
+#friends ul {
+    list-style: none;
+    padding: 0;
+}
+
+#friends li {
+    padding: 0 18px 18px 0;
+    display: inline-block;
+}
