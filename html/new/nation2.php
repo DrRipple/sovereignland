@@ -56,6 +56,11 @@ if (isset($_POST["token"])) {
     $basicsfile = fopen("$dirpath/basic.json", "w");
     fwrite($basicsfile, $basics);
     fclose($basicsfile);
+
+    $relation_json = '{"friends":[],"enemies":[]}';
+    $relation_file = fopen("$dirpath/relations.json", "w");
+    fwrite($relation_file, $relation_json);
+    fclose($relation_file);
 } else {
     $nation = "Test!";
     $officialtitle = "The Repubic of Test";

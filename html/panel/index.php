@@ -86,11 +86,12 @@ if (isset($_GET["sign"])) {
                 <li class="active" id="wiki_tab"><img src="../data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Edit Wiki Entry</a></li>
                 <li id="post_tab"><img src="../data/icons/nation_news.png"><a href="#" onclick="showTab('post')">Write New Post</a></li>
                 <li id="flag_tab"><img src="../data/icons/nation_flag.png"><a href="#" onclick="showTab('flag')">Edit Flag</a></li>
-                <li><img src="../data/icons/nation_friends.png"><a href="#">Edit Friends</a></li>
+                <li id="friends_tab"><img src="../data/icons/nation_friends.png"><a href="#" onclick="showTab('friends')">Edit Friends</a></li>
             </ul>
         </div>
         <div id="wiki" class="content">
             <h3>National Wiki Entry</h3>
+            <p>Coming soon</p>
         </div>
 
         <div id="post" class="content">
@@ -124,6 +125,28 @@ if (isset($_GET["sign"])) {
                 <p class="g_signin_text">Sign-In With Google Above</p>
                 <div class="finalbutton">
                     <button>Change Flag</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="friends" class="content">
+            <h3>Add Friends and Enemies</h3>
+            <p>The option to remove friends and enemies will be added soon.</p>
+            <form action="friends.php" method="post">
+                <input type="hidden" name="nation" value="<?php echo $nation ?>">
+                <input type="hidden" name="world" value="<?php echo $world ?>">
+                <input type="hidden" name="token" class="tokenbox">
+                <p>Nation Name</p>
+                <input type="text" name="target">
+                <p>Relation</p>
+                <select name="mode">
+                    <option value="af">Add Friend</option>
+                    <option value="ae">Add Enemy</option>
+                </select>
+                <p class="g_signin_text">Sign-In With Google Above</p>
+                <div class="finalbutton">
+                    <p>*Relations can only be between nations in the same world.</p>
+                    <button>Edit Relations</button>
                 </div>
             </form>
         </div>
