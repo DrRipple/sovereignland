@@ -75,16 +75,17 @@ if (isset($_GET["sign"])) {
         </div>
         <div id="titlearea">
             <div id="nationtitle">
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 <img src="<?php echo $basicdata['flagURL']?>">
                 <h1>
                     <?php echo display_input($nation) ?>
-                    <span class="regular">(Editing)</span> 
+                    <span class="extra">(Editing)</span>
                 </h1>
             </div>
             <ul id="navbar">
                 <li class="active" id="wiki_tab"><img src="../data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Edit Wiki Entry</a></li>
                 <li id="post_tab"><img src="../data/icons/nation_news.png"><a href="#" onclick="showTab('post')">Write New Post</a></li>
-                <li id="nations_tab"><img src="../data/icons/nation_flag.png"><a href="#" onclick="showTab('nations')">Edit Flag</a></li>
+                <li id="flag_tab"><img src="../data/icons/nation_flag.png"><a href="#" onclick="showTab('flag')">Edit Flag</a></li>
                 <li><img src="../data/icons/nation_friends.png"><a href="#">Edit Friends</a></li>
             </ul>
         </div>
@@ -98,14 +99,31 @@ if (isset($_GET["sign"])) {
             <form action="post.php" method="post">
                 <input type="hidden" name="nation" value="<?php echo $nation ?>">
                 <input type="hidden" name="world" value="<?php echo $world ?>">
-                <input type="hidden" name="token" id="tokenbox">
+                <input type="hidden" name="token" class="tokenbox">
                 <textarea name="post"># Event Title</textarea>
                 <hr>
-                <p id="g_signin_text">Sign-In With Google</p>
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                <div id="finalbutton">
+                <p class="g_signin_text">Sign-In With Google Above</p>
+                <div class="finalbutton">
                     <p>Make sure you read over your post before publishing.</p>
                     <button>Publish Post</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="flag" class="content">
+            <h3>Edit Your Flag</h3>
+            <form action="flag.php" method="post">
+                <input type="hidden" name="nation" value="<?php echo $nation ?>">
+                <input type="hidden" name="world" value="<?php echo $world ?>">
+                <input type="hidden" name="token" class="tokenbox">
+                <p>Flag URL</p>
+                <input type="text" name="flag" onblur="flagPreview()" id="flag_url">
+                <p class="helptext">To use a custom flag, upload it to an image sharing site and enter the direct link. Leave the box blank to use the default flag.</p>
+                <p>Preview:</p>
+                <img src="<?php echo $basicdata['flagURL']?>" id="flagpreview">
+                <p class="g_signin_text">Sign-In With Google Above</p>
+                <div class="finalbutton">
+                    <button>Change Flag</button>
                 </div>
             </form>
         </div>
@@ -113,15 +131,23 @@ if (isset($_GET["sign"])) {
     	<script>
     		function onSignIn(googleUser) {
     			var profile = googleUser.getBasicProfile();
-    			var signinText = document.getElementById("g_signin_text");
-    			signinText.innerHTML = "Signed-In as: " + profile.getName();
+    			var signinTexts = document.getElementsByClassName("g_signin_text");
+    			var proceedButtons = document.getElementsByClassName("finalbutton");
+    			var tokenBoxes = document.getElementsByClassName("tokenbox");
 
-    			var proceedButton = document.getElementById("finalbutton");
-    			proceedButton.style.display = "block";
-
-    			var tokenBox = document.getElementById("tokenbox");
-    			tokenBox.value = googleUser.getAuthResponse().id_token;
+                for (var i = 0; i < signinTexts.length; i++) {
+                    signinTexts[i].innerHTML = "Signed-In as: " + profile.getName();
+                    proceedButtons[i].style.display = "block";
+                    tokenBoxes[i].value = googleUser.getAuthResponse().id_token;
+                }
     		}
+
+            function flagPreview() {
+                var flagURL = document.getElementById("flag_url").value;
+                var previewBox = document.getElementById("flagpreview");
+                if (flagURL == "") flagURL = "<?php echo $basicdata['flagURL']?>";
+                previewBox.src = flagURL;
+            }
 
             function showTab(section) {
                 var theSection = document.getElementById(section);

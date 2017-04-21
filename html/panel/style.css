@@ -103,9 +103,14 @@ body {
     color: #888;
 }
 
-.regular {
+.extra {
     font-weight: 400;
-    text-decoration: none;
+    font-size: 32px;
+    color: #888;
+}
+
+.g-signin2 {
+    float: right;
 }
 
 .content {
@@ -113,7 +118,7 @@ body {
     margin: 40px auto;
 }
 
-#post, #flagedit, #friends {
+#post, #flag, #friends {
     display: none;
 }
 
@@ -147,7 +152,7 @@ hr {
     border-bottom: 1px solid #ccc;
 }
 
-#finalbutton {
+.finalbutton {
     display: none;
 }
 
@@ -187,4 +192,28 @@ button:focus {
     font-weight: bold;
     text-decoration: none;
     padding: 0 4px;
+}
+
+input[type=text] {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 350px;
+    font-size: 18px;
+    font-family: inherit;
+    padding: 4px;
+    color: #4f4f4f;
+}
+
+input[type=text]:hover {border-color: #4f4f4f}
+
+input[type=text]:focus {
+    outline: none;
+    border-color: #4f4f4f;
+    background-color: #f0f0f0;
+}
+
+#flagpreview {
+    border: 1px solid #ccc;
+    height: 150px;
 }
