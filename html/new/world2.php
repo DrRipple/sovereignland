@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <?php
+echo "This feature has been temporarily disabled.";
+die();
+/*
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -73,9 +76,9 @@ if (isset($_POST["token"])) {
     fclose($code_file);
 } else {
     $code = "1234567890";
-}
+}*/
 ?>
-<html>
+<!--<html>
 	<head>
 		<title>Create World | Sovereign.Land</title>
 		<link rel="icon" type="image/png" href="../favicon.png">
@@ -102,4 +105,4 @@ if (isset($_POST["token"])) {
             </ul>
         </div>
     </body>
-</html>
+</html>-->

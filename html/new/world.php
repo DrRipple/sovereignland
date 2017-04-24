@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html>
+<?php
+echo "This feature has been temporarily disabled.";
+die();
+?>
+<!--<html>
 	<head>
 		<title>Create World | Sovereign.Land</title>
 		<link rel="icon" type="image/png" href="../favicon.png">
@@ -93,4 +97,4 @@
             }
         </script>
     </body>
-</html>
+</html>-->

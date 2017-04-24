@@ -14,7 +14,7 @@
             <div id="topcontainer">
                 <div id="desc">
     				<h1>Sovereign.Land</h1>
-    				<h2>Create a <a href="new/nation.php">nation</a> or <a href="new/world.php">world</a></h2>
+    				<h2>Create a new nation <a href="new/nation.php">here</a>.</h2>
                 </div>
             </div>
         </div>
