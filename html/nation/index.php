@@ -16,10 +16,16 @@ function display_input($data) {
     return $data;
 }
 
+function format_input($data) {
+    $data = test_input($data);
+    $data = str_replace(" ", "_", $data);
+    $data = strtolower($data);
+    return($data);
+}
+
 if (isset($_GET["w"]) && isset($_GET["n"])) {
-    $nation = test_input($_GET["n"]);
-    $world = test_input($_GET["w"]);
-    $world_display = display_input($world);
+    $nation = format_input($_GET["n"]);
+    $world = format_input($_GET["w"]);
     $world_url = "../world?w=$world";
 
     $basicdata_json = file_get_contents("../data/nations/$world/$nation/basic.json");
@@ -84,7 +90,7 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
             <div id="nationtitle">
                 <img src="<?php echo $basicdata['flagURL'] ?>">
                 <h1>
-                    <a id="world" href="<?php echo $world_url ?>"><?php echo $world_display ?></a> /
+                    <a id="world" href="<?php echo $world_url ?>"><?php echo display_input($world) ?></a> /
                     <?php echo display_input($nation) ?>
                 </h1>
             </div>

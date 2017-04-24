@@ -16,9 +16,15 @@ function display_input($data) {
     return $data;
 }
 
+function format_input($data) {
+    $data = test_input($data);
+    $data = str_replace(" ", "_", $data);
+    $data = strtolower($data);
+    return($data);
+}
+
 if (isset($_GET["w"])) {
-    $world = test_input($_GET["w"]);
-    $world_display = display_input($world);
+    $world = format_input($_GET["w"]);
     $world_url = "../world?w=$world";
 
     $data_json = file_get_contents("../data/worlds/$world.json");
@@ -80,7 +86,7 @@ if (isset($_GET["w"])) {
         <div id="titlearea">
             <div id="worldtitle">
                 <img src="<?php echo $world_data['banner']?>">
-                <h1><?php echo $world_display ?> <span class="extra" style="font-size: 32px">(world)</span></h1>
+                <h1><?php echo display_input($world) ?> <span class="extra" style="font-size: 32px">(world)</span></h1>
             </div>
             <ul id="navbar">
                 <li class="active" id="wiki_tab"><img src="../data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Wiki Entry</a></li>
