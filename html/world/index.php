@@ -79,7 +79,7 @@ if (isset($_GET["w"])) {
                 <h1>
                     <a href="../">sovereign.land</a>
                 </h1>
-                <span id="signin"><a href="../panel">Nation Panel</a></span>
+                <span id="signin"><a href="#" onclick="showMenu()">Menu</a></span>
             </div>
         </div>
 
@@ -110,8 +110,24 @@ if (isset($_GET["w"])) {
             <?php echo $residents_html ?>
         </div>
 
-        <div style="height: 300px"></div>
-        <div id="footer" style="position: fixed; bottom: 0; width: 100%; padding: 30px 40px; background: #eee">This game is in the alpha stage. <a href="../terms">Terms and Privacy Policy</a></div>
+        <ul id="menu">
+            <li><a href="#" onclick="closeMenu()">Close Menu</a></li>
+            <li><a href="../panel">Nation Panel</a></li>
+            <li>
+                <form action="../nation" method="get">
+                    <input type="text" name="n" value="Nation Name" onfocus="clearText(this)">
+                    <input type="text" name="w" value="World Name" onfocus="clearText(this)">
+                    <button>View Nation</button>
+                </form>
+            </li>
+            <li>
+                <form action="" method="get">
+                    <input type="text" name="w" value="World Name" onfocus="clearText(this)">
+                    <button>View World</button>
+                </form>
+            </li>
+            <li><a href="../terms">Terms and Privacy Policy</a></li>
+        </ul>
 
         <script>
             function showTab(section) {
@@ -126,6 +142,19 @@ if (isset($_GET["w"])) {
 
                 theSection.style.display = "block";
                 sectionTab.className = "active";
+            }
+
+            function clearText(element) {
+                element.value = "";
+                element.style.color = "#4f4f4f";
+            }
+
+            function showMenu() {
+                document.getElementById("menu").style.display = "block";
+            }
+
+            function closeMenu() {
+                document.getElementById("menu").style.display = "none";
             }
         </script>
     </body>

@@ -129,7 +129,7 @@ a:hover {text-decoration: none}
     margin: 40px auto;
 }
 
-#news, #info, #stats, #friends {display: none}
+#news, #info, #wiki, #friends {display: none}
 
 #info ul {
     padding: 0 0 20px 0;
@@ -154,3 +154,69 @@ a:hover {text-decoration: none}
     padding: 0 18px 18px 0;
     display: inline-block;
 }
+
+table {
+    border: 1px solid #ccc;
+}
+
+#menu {
+    margin: 0;
+    list-style: none;
+    position: fixed;
+    background: #fff;
+    border-left: 10px solid #2a57ae;
+    top: 0;
+    right: 0;
+    padding: 0;
+    width: 380px;
+    height: 100%;
+    display: none;
+}
+
+#menu li {
+    padding: 18px 24px;
+    border-bottom: 1px solid #ccc;
+}
+
+#menu li:hover {background: #f3f3f3}
+
+#menu a, #menu a:visited {
+    color: #4f4f4f;
+    text-decoration: none;
+}
+
+#menu input[type=text] {
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 18px;
+    font-family: inherit;
+    color: #ccc;
+    padding: 4px;
+    border: 1px solid #ccc;
+    display: block;
+    margin-bottom: 12px;
+    border-radius: 4px;
+}
+
+#menu input[type=text]:hover {
+    border-color: #4f4f4f;
+    color: #4f4f4f;
+}
+
+#menu input[type=text]:focus {
+    border-color: #4f4f4f;
+    outline: none;
+}
+
+#menu button {
+    background: #fff;
+    color: #4f4f4f;
+    font-size: 18px;
+    font-family: inherit;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#menu button:hover {border-color: #4f4f4f}

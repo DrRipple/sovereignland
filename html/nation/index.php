@@ -30,7 +30,7 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
 
     $basicdata_json = file_get_contents("../data/nations/$world/$nation/basic.json");
     if ($basicdata_json == false) {
-        echo "Incorrect world or nation code.";
+        echo "That nation or world could not be found.";
         die();
     }
     $basicdata = json_decode($basicdata_json, true);
@@ -83,9 +83,10 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
                 <h1>
                     <a href="../">sovereign.land</a>
                 </h1>
-                <span id="signin"><a href="../panel">Nation Panel</a></span>
+                <span id="signin"><a href="#" onclick="showMenu()">Menu</a></span>
             </div>
         </div>
+
         <div id="titlearea">
             <div id="nationtitle">
                 <img src="<?php echo $basicdata['flagURL'] ?>">
@@ -95,10 +96,10 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
                 </h1>
             </div>
             <ul id="navbar">
-                <li id="wiki_tab" class="active"><img src="../data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Wiki Entry</a></li>
+                <li id="wiki_tab"><img src="../data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Wiki Entry</a></li>
                 <li id="news_tab"><img src="../data/icons/nation_news.png"><a href="#" onclick="showTab('news')">Latest News</a></li>
                 <li id="info_tab"><img src="../data/icons/nation_info.png"><a href="#" onclick="showTab('info')">Information</a></li>
-                <li id="stats_tab"><img src="../data/icons/nation_stats.png"><a href="#" onclick="showTab('stats')">Statistics</a></li>
+                <li id="stats_tab" class="active"><img src="../data/icons/nation_stats.png"><a href="#" onclick="showTab('stats')">Statistics</a></li>
                 <li id="friends_tab"><img src="../data/icons/nation_friends.png"><a href="#" onclick="showTab('friends')">Friends</a></li>
             </ul>
         </div>
@@ -138,8 +139,24 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
             <?php echo $enemies_html ?>
         </div>
 
-        <div style="height: 300px"></div>
-        <div id="footer" style="position: fixed; bottom: 0; width: 100%; padding: 30px 40px; background: #eee">This game is in the alpha stage. <a href="../terms">Terms and Privacy Policy</a></div>
+        <ul id="menu">
+            <li><a href="#" onclick="closeMenu()">Close Menu</a></li>
+            <li><a href="../panel">Nation Panel</a></li>
+            <li>
+                <form action="" method="get">
+                    <input type="text" name="n" value="Nation Name" onfocus="clearText(this)">
+                    <input type="text" name="w" value="World Name" onfocus="clearText(this)">
+                    <button>View Nation</button>
+                </form>
+            </li>
+            <li>
+                <form action="../world" method="get">
+                    <input type="text" name="w" value="World Name" onfocus="clearText(this)">
+                    <button>View World</button>
+                </form>
+            </li>
+            <li><a href="../terms">Terms and Privacy Policy</a></li>
+        </ul>
 
         <script>
             google.charts.load("current", {"packages": ["corechart"]});
@@ -181,6 +198,19 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
 
                 theSection.style.display = "block";
                 sectionTab.className = "active";
+            }
+
+            function clearText(element) {
+                element.value = "";
+                element.style.color = "#4f4f4f";
+            }
+
+            function showMenu() {
+                document.getElementById("menu").style.display = "block";
+            }
+
+            function closeMenu() {
+                document.getElementById("menu").style.display = "none";
             }
         </script>
     </body>
