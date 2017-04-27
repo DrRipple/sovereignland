@@ -7,7 +7,7 @@ die();
 	<head>
 		<title>Create World | Sovereign.Land</title>
 		<link rel="icon" type="image/png" href="../favicon.png">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="../stylesheets/creator.css">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
 

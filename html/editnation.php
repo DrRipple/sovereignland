@@ -24,15 +24,15 @@ if (isset($_GET["sign"])) {
     $world = test_input($_COOKIE["sl_world"]);
 
     $world_display = display_input($world);
-    $world_url = "../world?w=$world";
+    $world_url = "world?w=$world";
 
-    $basicdata_json = file_get_contents("../data/nations/$world/$nation/basic.json");
+    $basicdata_json = file_get_contents("data/nations/$world/$nation/basic.json");
     if ($basicdata_json == false) {
         echo "Incorrect world or nation code.";
         die();
     }
     $basicdata = json_decode($basicdata_json, true);
-    $wikifile = "../data/nations/$world/$nation/wiki.md";
+    $wikifile = "data/nations/$world/$nation/wiki.md";
     $wikidata = file_get_contents($wikifile);
 } elseif (isset($_GET["n"])) {
     setcookie("sl_nation", test_input($_GET["n"]), time() + (86400 * 30), "/");
@@ -56,8 +56,8 @@ if (isset($_GET["sign"])) {
 <html>
 	<head>
 		<title>Sign In | Sovereign.Land</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" type="image/png" href="../favicon.png">
+        <link rel="stylesheet" href="stylesheets/editnation.css">
+        <link rel="icon" type="image/png" href="favicon.png">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
 
@@ -68,7 +68,7 @@ if (isset($_GET["sign"])) {
     	<div id="topbar">
             <div id="topcontainer">
                 <h1>
-                    <a href="../">sovereign.land</a>
+                    <a href="/">sovereign.land</a>
                 </h1>
                 <span id="signin"><a href="?sign=out">Sign Out</a></span>
             </div>
@@ -83,10 +83,10 @@ if (isset($_GET["sign"])) {
                 </h1>
             </div>
             <ul id="navbar">
-                <li class="active" id="wiki_tab"><img src="../data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Edit Wiki Entry</a></li>
-                <li id="post_tab"><img src="../data/icons/nation_news.png"><a href="#" onclick="showTab('post')">Write New Post</a></li>
-                <li id="flag_tab"><img src="../data/icons/nation_flag.png"><a href="#" onclick="showTab('flag')">Edit Flag</a></li>
-                <li id="friends_tab"><img src="../data/icons/nation_friends.png"><a href="#" onclick="showTab('friends')">Edit Friends</a></li>
+                <li class="active" id="wiki_tab"><img src="data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Edit Wiki Entry</a></li>
+                <li id="post_tab"><img src="data/icons/nation_news.png"><a href="#" onclick="showTab('post')">Write New Post</a></li>
+                <li id="flag_tab"><img src="data/icons/nation_flag.png"><a href="#" onclick="showTab('flag')">Edit Flag</a></li>
+                <li id="friends_tab"><img src="data/icons/nation_friends.png"><a href="#" onclick="showTab('friends')">Edit Friends</a></li>
             </ul>
         </div>
         <div id="wiki" class="content">
@@ -152,7 +152,7 @@ if (isset($_GET["sign"])) {
         </div>
 
         <div style="height: 300px"></div>
-        <div id="footer" style="position: fixed; bottom: 0; width: 100%; padding: 30px 40px; background: #eee">This game is in the alpha stage. <a href="../terms">Terms and Privacy Policy</a></div>
+        <div id="footer" style="position: fixed; bottom: 0; width: 100%; padding: 30px 40px; background: #eee">This game is in the alpha stage. <a href="terms">Terms and Privacy Policy</a></div>
 
     	<script>
     		function onSignIn(googleUser) {

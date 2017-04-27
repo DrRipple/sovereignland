@@ -2,7 +2,7 @@
 	<head>
 		<title>Create Nation | Sovereign.Land</title>
 		<link rel="icon" type="image/png" href="favicon.png">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="stylesheets/homepage.css">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
 
@@ -49,13 +49,13 @@
     	</form>
 
         <div style="height: 300px"></div>
-        <div id="footer" style="position: fixed; bottom: 0; width: 100%; padding: 30px 40px; background: #eee">This game is in the alpha stage. <a href="../terms">Terms and Privacy Policy</a></div>
+        <div id="footer" style="position: fixed; bottom: 0; width: 100%; padding: 30px 40px; background: #eee">This game is in the alpha stage. <a href="terms">Terms and Privacy Policy</a></div>
 
     	<script>
     		function flagPreview() {
     			var flagURL = document.getElementById("flag_url").value;
     			var previewBox = document.getElementById("flagpreview");
-    			if (flagURL == "") flagURL = "../data/flag.png";
+    			if (flagURL == "") flagURL = "data/flag.png";
     			previewBox.src = flagURL;
     		}
 

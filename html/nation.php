@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-require "../data/Parsedown.php";
+require "data/Parsedown.php";
 $Parsedown = new Parsedown();
 
 function test_input($data) {
@@ -26,15 +26,15 @@ function format_input($data) {
 if (isset($_GET["w"]) && isset($_GET["n"])) {
     $nation = format_input($_GET["n"]);
     $world = format_input($_GET["w"]);
-    $world_url = "../world?w=$world";
+    $world_url = "world?w=$world";
 
-    $basicdata_json = file_get_contents("../data/nations/$world/$nation/basic.json");
+    $basicdata_json = file_get_contents("data/nations/$world/$nation/basic.json");
     if ($basicdata_json == false) {
         echo "That nation or world could not be found.";
         die();
     }
     $basicdata = json_decode($basicdata_json, true);
-    $filepath = "../data/nations/$world/$nation";
+    $filepath = "data/nations/$world/$nation";
     $wikidata = file_get_contents("$filepath/wiki.md");
 
     $p2_json = file_get_contents("$filepath/phase2.json");
@@ -48,7 +48,7 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
     $friends = $rel_data["friends"];
     $friends_html = "<ul>";
     for ($i = 0; $i < count($friends); $i++) {
-        $friend_link = "../nation?w=$world&n=" . $friends[$i];
+        $friend_link = "nation?w=$world&n=" . $friends[$i];
         $friend_name = display_input($friends[$i]);
         $friends_html .= "<li><a href='$friend_link'>$friend_name</a></li>";
     }
@@ -57,7 +57,7 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
     $enemies = $rel_data["enemies"];
     $enemies_html = "<ul>";
     for ($i = 0; $i < count($enemies); $i++) {
-        $enemy_link = "../nation?w=$world&n=" . $enemies[$i];
+        $enemy_link = "nation?w=$world&n=" . $enemies[$i];
         $enemy_name = display_input($enemies[$i]);
         $enemies_html .= "<li><a href='$enemy_link'>$enemy_name</a></li>";
     }
@@ -70,8 +70,8 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
 <html>
     <head>
         <title>Sovereign.Land</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" type="image/png" href="../favicon.png">
+        <link rel="stylesheet" href="stylesheets/nation.css">
+        <link rel="icon" type="image/png" href="favicon.png">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
 
@@ -81,7 +81,7 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
         <div id="topbar">
             <div id="topcontainer">
                 <h1>
-                    <a href="../">sovereign.land</a>
+                    <a href="/">sovereign.land</a>
                 </h1>
                 <span id="signin"><a href="#" onclick="showMenu()">Menu</a></span>
             </div>
@@ -96,11 +96,11 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
                 </h1>
             </div>
             <ul id="navbar">
-                <li id="wiki_tab"><img src="../data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Wiki Entry</a></li>
-                <li id="news_tab"><img src="../data/icons/nation_news.png"><a href="#" onclick="showTab('news')">Latest News</a></li>
-                <li id="info_tab"><img src="../data/icons/nation_info.png"><a href="#" onclick="showTab('info')">Information</a></li>
-                <li id="stats_tab" class="active"><img src="../data/icons/nation_stats.png"><a href="#" onclick="showTab('stats')">Statistics</a></li>
-                <li id="friends_tab"><img src="../data/icons/nation_friends.png"><a href="#" onclick="showTab('friends')">Friends</a></li>
+                <li id="wiki_tab"><img src="data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Wiki Entry</a></li>
+                <li id="news_tab"><img src="data/icons/nation_news.png"><a href="#" onclick="showTab('news')">Latest News</a></li>
+                <li id="info_tab"><img src="data/icons/nation_info.png"><a href="#" onclick="showTab('info')">Information</a></li>
+                <li id="stats_tab" class="active"><img src="data/icons/nation_stats.png"><a href="#" onclick="showTab('stats')">Statistics</a></li>
+                <li id="friends_tab"><img src="data/icons/nation_friends.png"><a href="#" onclick="showTab('friends')">Friends</a></li>
             </ul>
         </div>
 
@@ -141,7 +141,7 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
 
         <ul id="menu">
             <li><a href="#" onclick="closeMenu()">Close Menu</a></li>
-            <li><a href="../panel">Nation Panel</a></li>
+            <li><a href="editnation">Nation Panel</a></li>
             <li>
                 <form action="" method="get">
                     <input type="text" name="n" value="Nation Name" onfocus="clearText(this)">
@@ -150,12 +150,12 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
                 </form>
             </li>
             <li>
-                <form action="../world" method="get">
+                <form action="world" method="get">
                     <input type="text" name="w" value="World Name" onfocus="clearText(this)">
                     <button>View World</button>
                 </form>
             </li>
-            <li><a href="../terms">Terms and Privacy Policy</a></li>
+            <li><a href="terms">Terms and Privacy Policy</a></li>
         </ul>
 
         <script>

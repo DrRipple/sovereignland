@@ -178,8 +178,6 @@ table {
     border-bottom: 1px solid #ccc;
 }
 
-#menu li:hover {background: #f3f3f3}
-
 #menu a, #menu a:visited {
     color: #4f4f4f;
     text-decoration: none;

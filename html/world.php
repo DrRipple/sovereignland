@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-require "../data/Parsedown.php";
+require "data/Parsedown.php";
 $Parsedown = new Parsedown();
 
 function test_input($data) {
@@ -25,23 +25,23 @@ function format_input($data) {
 
 if (isset($_GET["w"])) {
     $world = format_input($_GET["w"]);
-    $world_url = "../world?w=$world";
+    $world_url = "world?w=$world";
 
-    $data_json = file_get_contents("../data/worlds/$world.json");
+    $data_json = file_get_contents("data/worlds/$world.json");
     if ($data_json == false) {
         echo "That world could not be found.";
         die();
     }
     $world_data = json_decode($data_json, true);
-    $wikifile = "../data/worlds/$world.md";
+    $wikifile = "data/worlds/$world.md";
     $wikidata = file_get_contents($wikifile);
 
     //Resident nations list
 
-    $residents = scandir("../data/nations/$world/");
+    $residents = scandir("data/nations/$world/");
     $residents_html = "<ul>";
     for ($i = 2; $i < count($residents); $i++) {
-        $res_link = "../nation?w=$world&n=" . $residents[$i];
+        $res_link = "nation?w=$world&n=" . $residents[$i];
         $res_name = display_input($residents[$i]);
         $residents_html .= "<li><a href='$res_link'>$res_name</a></li>";
     }
@@ -49,13 +49,13 @@ if (isset($_GET["w"])) {
 
     //Event posts
 
-    $posts = scandir("../data/posts/$world/");
+    $posts = scandir("data/posts/$world/");
     $posts_html = "";
     for ($i = 2; $i < count($posts) && $i < 7; $i++) {
         $timestamp_unix = substr($posts[$i], 0, 10);
         $timestamp_show = date("d/m/Y H:i:s", $timestamp_unix);
         $time_html = "<span class='timestamp'>Posted at $timestamp_show</span>";
-        $post_data = file_get_contents("../data/posts/$world/" . $posts[$i]);
+        $post_data = file_get_contents("data/posts/$world/" . $posts[$i]);
         $post_html = $Parsedown->text($post_data);
 
         $posts_html .= "<div class='post'>$time_html<div class='postcontent'>$post_html</div></div>";
@@ -68,8 +68,8 @@ if (isset($_GET["w"])) {
 <html>
     <head>
         <title>Sovereign.Land</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" type="image/png" href="../favicon.png">
+        <link rel="stylesheet" href="stylesheets/world.css">
+        <link rel="icon" type="image/png" href="favicon.png">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
     </head>
@@ -77,7 +77,7 @@ if (isset($_GET["w"])) {
         <div id="topbar">
             <div id="topcontainer">
                 <h1>
-                    <a href="../">sovereign.land</a>
+                    <a href="/">sovereign.land</a>
                 </h1>
                 <span id="signin"><a href="#" onclick="showMenu()">Menu</a></span>
             </div>
@@ -89,10 +89,10 @@ if (isset($_GET["w"])) {
                 <h1><?php echo display_input($world) ?> <span class="extra" style="font-size: 32px">(world)</span></h1>
             </div>
             <ul id="navbar">
-                <li class="active" id="wiki_tab"><img src="../data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Wiki Entry</a></li>
-                <li id="posts_tab"><img src="../data/icons/nation_news.png"><a href="#" onclick="showTab('posts')">Latest News</a></li>
-                <li id="nations_tab"><img src="../data/icons/nation_flag.png"><a href="#" onclick="showTab('nations')">Nations</a></li>
-                <li><img src="../data/icons/nation_map.png"><a href="<?php echo $world_data['map'] ?>" target="_blank">Map</a></li>
+                <li class="active" id="wiki_tab"><img src="data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Wiki Entry</a></li>
+                <li id="posts_tab"><img src="data/icons/nation_news.png"><a href="#" onclick="showTab('posts')">Latest News</a></li>
+                <li id="nations_tab"><img src="data/icons/nation_flag.png"><a href="#" onclick="showTab('nations')">Nations</a></li>
+                <li><img src="data/icons/nation_map.png"><a href="<?php echo $world_data['map'] ?>" target="_blank">Map</a></li>
             </ul>
         </div>
 
@@ -112,9 +112,9 @@ if (isset($_GET["w"])) {
 
         <ul id="menu">
             <li><a href="#" onclick="closeMenu()">Close Menu</a></li>
-            <li><a href="../panel">Nation Panel</a></li>
+            <li><a href="editnation">Nation Panel</a></li>
             <li>
-                <form action="../nation" method="get">
+                <form action="nation" method="get">
                     <input type="text" name="n" value="Nation Name" onfocus="clearText(this)">
                     <input type="text" name="w" value="World Name" onfocus="clearText(this)">
                     <button>View Nation</button>
@@ -126,7 +126,7 @@ if (isset($_GET["w"])) {
                     <button>View World</button>
                 </form>
             </li>
-            <li><a href="../terms">Terms and Privacy Policy</a></li>
+            <li><a href="terms">Terms and Privacy Policy</a></li>
         </ul>
 
         <script>
