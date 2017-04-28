@@ -90,6 +90,13 @@ body {
     font-size: 48px;
 }
 
+#nationtitle a, #nationtitle a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+#nationtitle a:hover {text-decoration: underline}
+
 #world, #world:visited {
     text-transform: lowercase;
     font-size: 36px;

@@ -22,9 +22,9 @@ if (isset($_GET["sign"])) {
 } elseif (isset($_COOKIE["sl_nation"])) {
     $nation = test_input($_COOKIE["sl_nation"]);
     $world = test_input($_COOKIE["sl_world"]);
-
     $world_display = display_input($world);
     $world_url = "world?w=$world";
+    $nation_url = "nation?n=$nation&w=$world";
 
     $basicdata_json = file_get_contents("data/nations/$world/$nation/basic.json");
     if ($basicdata_json == false) {
@@ -78,7 +78,7 @@ if (isset($_GET["sign"])) {
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 <img src="<?php echo $basicdata['flagURL']?>">
                 <h1>
-                    <?php echo display_input($nation) ?>
+                    <a href="<?php echo $nation_url ?>"><?php echo display_input($nation) ?></a>
                     <span class="extra">(Editing)</span>
                 </h1>
             </div>
@@ -97,7 +97,7 @@ if (isset($_GET["sign"])) {
         <div id="post" class="content">
             <h3>Event Posting</h3>
             <p>Formatted using <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Markdown</a>.</p>
-            <form action="post.php" method="post">
+            <form action="panel/post.php" method="post">
                 <input type="hidden" name="nation" value="<?php echo $nation ?>">
                 <input type="hidden" name="world" value="<?php echo $world ?>">
                 <input type="hidden" name="token" class="tokenbox">
@@ -113,7 +113,7 @@ if (isset($_GET["sign"])) {
 
         <div id="flag" class="content">
             <h3>Edit Your Flag</h3>
-            <form action="flag.php" method="post">
+            <form action="panel/flag.php" method="post">
                 <input type="hidden" name="nation" value="<?php echo $nation ?>">
                 <input type="hidden" name="world" value="<?php echo $world ?>">
                 <input type="hidden" name="token" class="tokenbox">
@@ -132,7 +132,7 @@ if (isset($_GET["sign"])) {
         <div id="friends" class="content">
             <h3>Add Friends and Enemies</h3>
             <p>The option to remove friends and enemies will be added soon.</p>
-            <form action="friends.php" method="post">
+            <form action="panel/friends.php" method="post">
                 <input type="hidden" name="nation" value="<?php echo $nation ?>">
                 <input type="hidden" name="world" value="<?php echo $world ?>">
                 <input type="hidden" name="token" class="tokenbox">
