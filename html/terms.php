@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-require "../data/Parsedown.php";
+require "data/Parsedown.php";
 $Parsedown = new Parsedown();
 
 $term_content = file_get_contents("data/terms.md");
