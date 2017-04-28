@@ -161,7 +161,6 @@ table {
     top: 0;
     right: 0;
     padding: 0;
-    width: 380px;
     height: 100%;
     display: none;
 }
@@ -171,8 +170,6 @@ table {
     border-bottom: 1px solid #ccc;
 }
 
-#menu li:hover {background: #f3f3f3}
-
 #menu a, #menu a:visited {
     color: #4f4f4f;
     text-decoration: none;
@@ -180,7 +177,7 @@ table {
 
 #menu input[type=text] {
     box-sizing: border-box;
-    width: 100%;
+    width: 252px;
     font-size: 18px;
     font-family: inherit;
     color: #ccc;
@@ -202,11 +199,14 @@ table {
 }
 
 #menu button {
+    display: inline-block;
     background: #fff;
     color: #4f4f4f;
     font-size: 18px;
     font-family: inherit;
-    padding: 6px 12px;
+    padding: 6px 0;
+    width: 120px;
+    margin-right: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;

@@ -13,15 +13,16 @@ function display_input($data) {
     return $data;
 }
 
-if (isset($_GET["sign"])) {
-    setcookie("sl_nation", "", time() - 3600, "/");
-    setcookie("sl_world", "", time() - 3600, "/");
+function format_input($data) {
+    $data = test_input($data);
+    $data = str_replace(" ", "_", $data);
+    $data = strtolower($data);
+    return($data);
+}
 
-    echo "Signed out.";
-    die();
-} elseif (isset($_COOKIE["sl_nation"])) {
-    $nation = test_input($_COOKIE["sl_nation"]);
-    $world = test_input($_COOKIE["sl_world"]);
+if (isset($_GET["n"])) {
+    $nation = format_input($_GET["n"]);
+    $world = format_input($_GET["w"]);
     $world_display = display_input($world);
     $world_url = "world?w=$world";
     $nation_url = "nation?n=$nation&w=$world";
@@ -34,10 +35,6 @@ if (isset($_GET["sign"])) {
     $basicdata = json_decode($basicdata_json, true);
     $wikifile = "data/nations/$world/$nation/wiki.md";
     $wikidata = file_get_contents($wikifile);
-} elseif (isset($_GET["n"])) {
-    setcookie("sl_nation", test_input($_GET["n"]), time() + (86400 * 30), "/");
-    setcookie("sl_world", test_input($_GET["w"]), time() + (86400 * 30), "/");
-    header("Refresh:0");
 } else {
     $html = "
         <form action='' method='get'>
@@ -70,7 +67,7 @@ if (isset($_GET["sign"])) {
                 <h1>
                     <a href="/">sovereign.land</a>
                 </h1>
-                <span id="signin"><a href="?sign=out">Sign Out</a></span>
+                <span id="signin"><a href="#" onclick="showMenu()">Menu</a></span>
             </div>
         </div>
         <div id="titlearea">
@@ -151,10 +148,28 @@ if (isset($_GET["sign"])) {
             </form>
         </div>
 
-        <div style="height: 300px"></div>
-        <div id="footer" style="position: fixed; bottom: 0; width: 100%; padding: 30px 40px; background: #eee">This game is in the alpha stage. <a href="terms">Terms and Privacy Policy</a></div>
+        <ul id="menu">
+            <li><a href="#" onclick="closeMenu()">Close Menu</a></li>
+            <li>
+                <form action="" method="get" id="nation_form">
+                    <input type="text" name="n" value="Nation Name" onfocus="clearText(this)">
+                    <input type="text" name="w" value="World Name" onfocus="clearText(this)">
+                    <button onclick="nationForm.action = 'nation'">View Nation</button><button>Edit Nation</button>
+                </form>
+            </li>
+            <li>
+                <form action="world" method="get" id="world_form">
+                    <input type="text" name="w" value="World Name" onfocus="clearText(this)">
+                    <button>View World</button><button onclick="worldForm.action = 'editworld'">Edit World</button>
+                </form>
+            </li>
+            <li><a href="terms">Terms and Privacy Policy</a></li>
+        </ul>
 
     	<script>
+            var nationForm = document.getElementById("nation_form");
+            var worldForm = document.getElementById("world_form");
+
     		function onSignIn(googleUser) {
     			var profile = googleUser.getBasicProfile();
     			var signinTexts = document.getElementsByClassName("g_signin_text");
@@ -187,6 +202,19 @@ if (isset($_GET["sign"])) {
 
                 theSection.style.display = "block";
                 sectionTab.className = "active";
+            }
+
+            function clearText(element) {
+                element.value = "";
+                element.style.color = "#4f4f4f";
+            }
+
+            function showMenu() {
+                document.getElementById("menu").style.display = "block";
+            }
+
+            function closeMenu() {
+                document.getElementById("menu").style.display = "none";
             }
     	</script>
     </body>

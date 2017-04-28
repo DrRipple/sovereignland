@@ -112,24 +112,26 @@ if (isset($_GET["w"])) {
 
         <ul id="menu">
             <li><a href="#" onclick="closeMenu()">Close Menu</a></li>
-            <li><a href="editnation">Nation Panel</a></li>
             <li>
-                <form action="nation" method="get">
+                <form action="nation" method="get" id="nation_form">
                     <input type="text" name="n" value="Nation Name" onfocus="clearText(this)">
                     <input type="text" name="w" value="World Name" onfocus="clearText(this)">
-                    <button>View Nation</button>
+                    <button>View Nation</button><button onclick="nationForm.action = 'editnation'">Edit Nation</button>
                 </form>
             </li>
             <li>
-                <form action="" method="get">
+                <form action="" method="get" id="world_form">
                     <input type="text" name="w" value="World Name" onfocus="clearText(this)">
-                    <button>View World</button>
+                    <button>View World</button><button onclick="worldForm.action = 'editworld'">Edit World</button>
                 </form>
             </li>
             <li><a href="terms">Terms and Privacy Policy</a></li>
         </ul>
 
         <script>
+            var nationForm = document.getElementById("nation_form");
+            var worldForm = document.getElementById("world_form");
+
             function showTab(section) {
                 var theSection = document.getElementById(section);
                 var sectionTab = document.getElementById(section + "_tab");
