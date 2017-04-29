@@ -41,7 +41,12 @@ h2 a, h2 a:visited {
 	color: #fff;
 }
 
-form, #content {
+h3 {
+    text-transform: uppercase;
+    font-size: 26px;
+}
+
+form, .content {
 	display: block;
 	width: 900px;
 	margin: 40px auto;
@@ -176,3 +181,26 @@ button:focus {
 #budget input[type=number]:hover {
 	border-color: #4f4f4f;
 }
+
+.world {
+	width: 279px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	margin: 0 8px;
+	display: inline-block;
+}
+
+.world img {
+	width: 100%;
+	display: block;
+}
+
+.world h4 {
+	font-size: 22px;
+	text-align: center;
+	margin: 8px 0;
+}
+
+.world h4 a, .world h4 a:visited {color: inherit}
+
+.world p {padding: 0 6px}

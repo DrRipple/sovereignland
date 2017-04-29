@@ -36,17 +36,26 @@
     		</span>
     	</form>
 
-    	<form action="world" method="get">
-    		<h3>World Viewer</h3>
-    		<span class="textfield">
-    			<p>World Name</p>
-    			<input type="text" name="w">
-    			<p class="helptext">Enter the name of the world you would like to view.</p>
-    		</span>
-    		<span class="textfield">
-    			<button>View World</button>
-    		</span>
-    	</form>
+        <hr>
+
+    	<div class="content">
+            <h3>Current Worlds</h3>
+            <div class="world">
+                <h4><a href="world?w=the_pacific">The Pacific</a></h4>
+                <img src="http://i.imgur.com/pkCfxGV.png">
+                <p>Lorem ipsum dolor si amet.</p>
+            </div>
+            <div class="world">
+                <h4><a href="world?w=dreiland">Dreiland</a></h4>
+                <img src="http://i.imgur.com/egkgcyT.png">
+                <p>Invite only, serious RP world from the founder of SL</p>
+            </div>
+            <div class="world">
+                <h4><a href="world?w=ussd">The USSD</a></h4>
+                <img src="http://i.imgur.com/IgEL8Du.png">
+                <p>Lorem ipsum dolor si amet.</p>
+            </div>
+        </div>
 
         <div style="height: 300px"></div>
         <div id="footer" style="position: fixed; bottom: 0; width: 100%; padding: 30px 40px; background: #eee">This game is in the alpha stage. <a href="terms">Terms and Privacy Policy</a></div>
