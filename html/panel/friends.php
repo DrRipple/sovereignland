@@ -47,6 +47,8 @@ if (isset($_POST["token"])) {
         fclose($relation_file);
 
         echo "Successfully added relation.";
+    } else {
+        echo "You are not signed into the correct Google Account for that nation.";
     }
 }
 ?>

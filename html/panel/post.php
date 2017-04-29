@@ -45,6 +45,8 @@ if (isset($_POST["token"])) {
     	fwrite($post_file, $post_data);
     	fclose($post_file);
     	echo "Successfully posted.";
+    } else {
+        echo "You are not signed into the correct Google Account for that nation.";
     }
 }
 ?>

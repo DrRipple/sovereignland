@@ -29,7 +29,7 @@ if (isset($_GET["n"])) {
 
     $basicdata_json = file_get_contents("data/nations/$world/$nation/basic.json");
     if ($basicdata_json == false) {
-        echo "Incorrect world or nation code.";
+        echo "That world or nation could not be found.";
         die();
     }
     $basicdata = json_decode($basicdata_json, true);
@@ -88,13 +88,25 @@ if (isset($_GET["n"])) {
         </div>
         <div id="wiki" class="content">
             <h3>National Wiki Entry</h3>
-            <p>Coming soon</p>
+            <p>Formatted using <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Markdown</a>.</p>
+            <form action="panel/wiki.php" method="post" target="_blank">
+                <input type="hidden" name="nation" value="<?php echo $nation ?>">
+                <input type="hidden" name="world" value="<?php echo $world ?>">
+                <input type="hidden" name="token" class="tokenbox">
+                <textarea name="wiki"><?php echo $wikidata ?></textarea>
+                <hr>
+                <p class="g_signin_text">Sign-In With Google Above</p>
+                <div class="finalbutton">
+                    <p>Make sure you read over your post before publishing.</p>
+                    <button>Publish Wiki Entry</button>
+                </div>
+            </form>
         </div>
 
         <div id="post" class="content">
             <h3>Event Posting</h3>
             <p>Formatted using <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Markdown</a>.</p>
-            <form action="panel/post.php" method="post">
+            <form action="panel/post.php" method="post" target="_blank">
                 <input type="hidden" name="nation" value="<?php echo $nation ?>">
                 <input type="hidden" name="world" value="<?php echo $world ?>">
                 <input type="hidden" name="token" class="tokenbox">
@@ -110,7 +122,7 @@ if (isset($_GET["n"])) {
 
         <div id="flag" class="content">
             <h3>Edit Your Flag</h3>
-            <form action="panel/flag.php" method="post">
+            <form action="panel/flag.php" method="post" target="_blank">
                 <input type="hidden" name="nation" value="<?php echo $nation ?>">
                 <input type="hidden" name="world" value="<?php echo $world ?>">
                 <input type="hidden" name="token" class="tokenbox">
@@ -129,7 +141,7 @@ if (isset($_GET["n"])) {
         <div id="friends" class="content">
             <h3>Add Friends and Enemies</h3>
             <p>The option to remove friends and enemies will be added soon.</p>
-            <form action="panel/friends.php" method="post">
+            <form action="panel/friends.php" method="post" target="_blank">
                 <input type="hidden" name="nation" value="<?php echo $nation ?>">
                 <input type="hidden" name="world" value="<?php echo $world ?>">
                 <input type="hidden" name="token" class="tokenbox">
@@ -143,7 +155,7 @@ if (isset($_GET["n"])) {
                 <p class="g_signin_text">Sign-In With Google Above</p>
                 <div class="finalbutton">
                     <p>*Relations can only be between nations in the same world.</p>
-                    <button>Edit Relations</button>
+                    <button>Declare Relation</button>
                 </div>
             </form>
         </div>
