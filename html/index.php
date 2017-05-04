@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Create Nation | Sovereign.Land</title>
+		<title>Sovereign.Land</title>
 		<link rel="icon" type="image/png" href="favicon.png">
 		<link rel="stylesheet" href="stylesheets/homepage.css">
         

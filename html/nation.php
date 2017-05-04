@@ -69,7 +69,7 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
 ?>
 <html>
     <head>
-        <title>Sovereign.Land</title>
+        <title><?php echo display_input($nation) ?> | Sovereign.Land</title>
         <link rel="stylesheet" href="stylesheets/nation.css">
         <link rel="icon" type="image/png" href="favicon.png">
         

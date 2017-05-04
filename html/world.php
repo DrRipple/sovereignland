@@ -67,7 +67,7 @@ if (isset($_GET["w"])) {
 ?>
 <html>
     <head>
-        <title>Sovereign.Land</title>
+        <title><?php echo display_input($world) ?> | Sovereign.Land</title>
         <link rel="stylesheet" href="stylesheets/world.css">
         <link rel="icon" type="image/png" href="favicon.png">
         

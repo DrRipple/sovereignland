@@ -52,7 +52,7 @@ if (isset($_GET["n"])) {
 ?>
 <html>
 	<head>
-		<title>Sign In | Sovereign.Land</title>
+		<title>Edit <?php echo display_input($nation) ?> | Sovereign.Land</title>
         <link rel="stylesheet" href="stylesheets/editnation.css">
         <link rel="icon" type="image/png" href="favicon.png">
         
