@@ -81,7 +81,7 @@ if (isset($_GET["w"])) {
                 <h1>
                     <a href="/">sovereign.land</a>
                 </h1>
-                <span id="signin"><a href="#" onclick="showMenu()">Menu</a></span>
+                <span id="signin"><a href="#" onclick="showMenu()"><img src="data/icons/menu.png"></a></span>
             </div>
         </div>
 

@@ -43,6 +43,8 @@ body {
     padding: 0 4px;
 }
 
+#signin img {height: 24px}
+
 #titlearea {
     background: #f3f3f3;
     border-bottom: 1px solid #ccc;
