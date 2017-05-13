@@ -71,7 +71,9 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
     <head>
         <title><?php echo display_input($nation) ?> | Sovereign.Land</title>
         <link rel="stylesheet" href="stylesheets/nation.css">
+        <link rel="stylesheet" href="stylesheets/tabpage.css">
         <link rel="icon" type="image/png" href="favicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
 
@@ -88,7 +90,7 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
         </div>
 
         <div id="titlearea">
-            <div id="nationtitle">
+            <div id="title">
                 <img src="<?php echo $basicdata['flagURL'] ?>">
                 <h1>
                     <a id="world" href="<?php echo $world_url ?>"><?php echo display_input($world) ?></a> /
@@ -96,11 +98,36 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
                 </h1>
             </div>
             <ul id="navbar">
-                <li id="wiki_tab"><img src="data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Wiki Entry</a></li>
-                <li id="news_tab"><img src="data/icons/nation_news.png"><a href="#" onclick="showTab('news')">Latest News</a></li>
-                <li id="info_tab"><img src="data/icons/nation_info.png"><a href="#" onclick="showTab('info')">Information</a></li>
-                <li id="stats_tab" class="active"><img src="data/icons/nation_stats.png"><a href="#" onclick="showTab('stats')">Statistics</a></li>
-                <li id="friends_tab"><img src="data/icons/nation_friends.png"><a href="#" onclick="showTab('friends')">Friends</a></li>
+                <li id="wiki_tab">
+                    <a href="#" onclick="showTab('wiki')">
+                        <img src="data/icons/nation_wiki.png">
+                        <span class="navtext">Wiki Entry</span>
+                    </a>
+                </li>
+                <li id="news_tab">
+                    <a href="#" onclick="showTab('news')">
+                        <img src="data/icons/nation_news.png">
+                        <span class="navtext">Latest News</span>
+                    </a>
+                </li>
+                <li id="info_tab">
+                    <a href="#" onclick="showTab('info')">
+                        <img src="data/icons/nation_info.png">
+                        <span class="navtext">Information</span>
+                    </a>
+                </li>
+                <li id="stats_tab" class="active">
+                    <a href="#" onclick="showTab('stats')">
+                        <img src="data/icons/nation_stats.png">
+                        <span class="navtext">Statistics</span>
+                    </a>
+                </li>
+                <li id="friends_tab">
+                    <a href="#" onclick="showTab('friends')">
+                        <img src="data/icons/nation_friends.png">
+                        <span class="navtext">Friends</span>
+                    </a>
+                </li>
             </ul>
         </div>
 

@@ -28,8 +28,19 @@ body {
     text-decoration: none;
 }
 
-#topbar h1 a:hover {
-    text-decoration: underline;
+#topbar h1 a:hover {text-decoration: underline;}
+
+#signin {
+    display: inline-block;
+    float: right;
+    padding: 6px 0;
+}
+
+#signin a, #signin a:visited {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0 4px;
 }
 
 #titlearea {
@@ -37,7 +48,7 @@ body {
     border-bottom: 1px solid #ccc;
 }
 
-#nationtitle {
+#title {
     width: 900px;
     margin: 0 auto;
     padding: 40px 0 22px 0;
@@ -77,47 +88,10 @@ body {
     text-decoration: none;
 }
 
-#nationtitle img {
-    float: left;
-    height: 56px;
-    margin-right: 14px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-#nationtitle h1 {
-    margin: 0;
-    font-size: 48px;
-}
-
-#nationtitle a, #nationtitle a:visited {
-    color: inherit;
-    text-decoration: none;
-}
-
-#nationtitle a:hover {text-decoration: underline}
-
-#world, #world:visited {
-    text-transform: lowercase;
-    font-size: 36px;
-    text-decoration: none;
-    color: #4f4f4f;
-    font-weight: 400;
-}
-
-#world:hover {
-    text-decoration: underline;
-    color: #888;
-}
-
 .extra {
-    font-weight: 400;
     font-size: 32px;
     color: #888;
-}
-
-.g-signin2 {
-    float: right;
+    font-weight: 400;
 }
 
 .content {
@@ -125,8 +99,22 @@ body {
     margin: 40px auto;
 }
 
-#post, #flag, #friends {
-    display: none;
+#title img {
+    float: left;
+    height: 56px;
+    margin-right: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+#title h1 {
+    margin: 0;
+    font-size: 48px;
+}
+
+#title h1 a {
+    color: inherit;
+    text-decoration: none;
 }
 
 h3 {
@@ -137,96 +125,8 @@ h3 {
 a, a:visited {color: #3472e9}
 a:hover {text-decoration: none}
 
-textarea {
-    padding: 8px;
-    width: 882px;
-    height: 400px;
+table {
     border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 18px;
-    font-family: monospace;
-    color: inherit;
-}
-
-textarea:hover, textarea:focus {
-    border-color: #4f4f4f;
-    outline: none;
-}
-
-hr {
-    margin: 26px 0;
-    border: none;
-    border-bottom: 1px solid #ccc;
-}
-
-.finalbutton {
-    display: none;
-}
-
-button {
-    margin: 10px 0;
-    background: #fff;
-    border: 1px solid #ccc;
-    padding: 12px 20px;
-    font-size: 18px;
-    font-family: inherit;
-    color: #4f4f4f;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    border-color: #4f4f4f;
-}
-
-button:active {
-    background: #eee;
-    border-color: #4f4f4f;
-}
-
-button:focus {
-    outline: none;
-}
-
-#signin {
-    display: inline-block;
-    float: right;
-    padding: 6px 0;
-}
-
-#signin a, #signin a:visited {
-    color: inherit;
-    font-weight: bold;
-    text-decoration: none;
-    padding: 0 4px;
-}
-
-input[type=text], select {
-    -ms-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box; 
-    box-sizing: content-box;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 350px;
-    font-size: 18px;
-    font-family: inherit;
-    padding: 4px;
-    color: #4f4f4f;
-}
-
-input[type=text]:hover, select:hover {border-color: #4f4f4f}
-
-input[type=text]:focus, select:focus {
-    outline: none;
-    border-color: #4f4f4f;
-    background-color: #f0f0f0;
-}
-
-#flagpreview {
-    border: 1px solid #ccc;
-    height: 150px;
 }
 
 #menu {
@@ -290,3 +190,22 @@ input[type=text]:focus, select:focus {
 }
 
 #menu button:hover {border-color: #4f4f4f}
+
+@media screen and (max-width: 989px) {
+    #topcontainer, #title, #navbar, .content {
+        box-sizing: border-box;
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    #topcontainer h1 a {font-size: 22px}
+    .navtext {display: none}
+    #title h1 {font-size: 34px}
+    #title img {height: 36px}
+    .extra {font-size: 26px}
+
+    h1 {font-size: 30px}
+    h2 {font-size: 24px}
+    h3 {font-size: 22px}
+}

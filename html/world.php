@@ -69,7 +69,9 @@ if (isset($_GET["w"])) {
     <head>
         <title><?php echo display_input($world) ?> | Sovereign.Land</title>
         <link rel="stylesheet" href="stylesheets/world.css">
+        <link rel="stylesheet" href="stylesheets/tabpage.css">
         <link rel="icon" type="image/png" href="favicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
     </head>
@@ -84,15 +86,35 @@ if (isset($_GET["w"])) {
         </div>
 
         <div id="titlearea">
-            <div id="worldtitle">
+            <div id="title">
                 <img src="<?php echo $world_data['banner']?>">
-                <h1><?php echo display_input($world) ?> <span class="extra" style="font-size: 32px">(world)</span></h1>
+                <h1><?php echo display_input($world) ?> <span class="extra">(world)</span></h1>
             </div>
             <ul id="navbar">
-                <li class="active" id="wiki_tab"><img src="data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Wiki Entry</a></li>
-                <li id="posts_tab"><img src="data/icons/nation_news.png"><a href="#" onclick="showTab('posts')">Latest News</a></li>
-                <li id="nations_tab"><img src="data/icons/nation_flag.png"><a href="#" onclick="showTab('nations')">Nations</a></li>
-                <li><img src="data/icons/nation_map.png"><a href="<?php echo $world_data['map'] ?>" target="_blank">Map</a></li>
+                <li class="active" id="wiki_tab">
+                    <a href="#" onclick="showTab('wiki')">
+                        <img src="data/icons/nation_wiki.png">
+                        <span class="navtext">Wiki Entry</span>
+                    </a>
+                </li>
+                <li id="posts_tab">
+                    <a href="#" onclick="showTab('posts')">
+                        <img src="data/icons/nation_news.png">
+                        <span class="navtext">Latest News</span>
+                    </a>
+                </li>
+                <li id="nations_tab">
+                    <a href="#" onclick="showTab('nations')">
+                        <img src="data/icons/nation_flag.png">
+                        <span class="navtext">Nations</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo $world_data['map'] ?>" target="_blank">
+                        <img src="data/icons/nation_map.png">
+                        <span class="navtext">Map</span>
+                    </a>
+                </li>
             </ul>
         </div>
 

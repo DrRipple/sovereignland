@@ -1,8 +1,8 @@
 <html>
-	<head>
-		<title>Sovereign.Land</title>
-		<link rel="icon" type="image/png" href="favicon.png">
-		<link rel="stylesheet" href="stylesheets/homepage.css">
+    <head>
+        <title>Create Nation | Sovereign.Land</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <link rel="stylesheet" href="stylesheets/homepage.css">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
 
@@ -10,40 +10,40 @@
         <script src="https://apis.google.com/js/platform.js" async defer></script>
     </head>
     <body>
-    	<div id="topbar">
+        <div id="topbar">
             <div id="topcontainer">
                 <div id="desc">
-    				<h1>Sovereign.Land</h1>
-    				<h2>Create a new nation <a href="new/nation.php">here</a>.</h2>
+                    <h1>Sovereign.Land</h1>
+                    <h2>Create a new nation <a href="new/nation.php">here</a>.</h2>
                 </div>
             </div>
         </div>
-    	
-    	<form action="nation" method="get">
-    		<h3>Nation Viewer</h3>
-    		<span class="textfield">
-    			<p>Nation Name</p>
-    			<input type="text" name="n">
-    			<p class="helptext">Enter the name of the nation you would like to view.</p>
-    		</span>
-    		<span class="textfield">
-    			<p>World Name</p>
-    			<input type="text" name="w">
-    			<p class="helptext">Enter the name of the world of the nation you would like to view.</p>
-    		</span>
-    		<span class="textfield">
-    			<button>View Nation</button>
-    		</span>
-    	</form>
+        
+        <form action="nation" method="get">
+            <h3>Nation Viewer</h3>
+            <span class="textfield">
+                <p>Nation Name</p>
+                <input type="text" name="n">
+                <p class="helptext">Enter the name of the nation you would like to view.</p>
+            </span>
+            <span class="textfield">
+                <p>World Name</p>
+                <input type="text" name="w">
+                <p class="helptext">Enter the name of the world of the nation you would like to view.</p>
+            </span>
+            <span class="textfield">
+                <button>View Nation</button>
+            </span>
+        </form>
 
         <hr>
 
-    	<div class="content">
+        <div class="content">
             <h3>Current Worlds</h3>
             <div class="world">
                 <h4><a href="world?w=the_pacific">The Pacific</a></h4>
-                <img src="http://i.imgur.com/pkCfxGV.png">
-                <p>Lorem ipsum dolor si amet.</p>
+                <img src="http://i.imgur.com/u1POFGQ.jpg">
+                <p>Meritocracy with a rich culture and a close-knit community</p>
             </div>
             <div class="world">
                 <h4><a href="world?w=dreiland">Dreiland</a></h4>
@@ -53,32 +53,32 @@
             <div class="world">
                 <h4><a href="world?w=ussd">The USSD</a></h4>
                 <img src="http://i.imgur.com/IgEL8Du.png">
-                <p>Lorem ipsum dolor si amet.</p>
+                <p>Welcome, partisans, to our socialist paradise!</p>
             </div>
         </div>
 
         <div style="height: 300px"></div>
         <div id="footer" style="position: fixed; bottom: 0; width: 100%; padding: 30px 40px; background: #eee">This game is in the alpha stage. <a href="terms">Terms and Privacy Policy</a></div>
 
-    	<script>
-    		function flagPreview() {
-    			var flagURL = document.getElementById("flag_url").value;
-    			var previewBox = document.getElementById("flagpreview");
-    			if (flagURL == "") flagURL = "data/flag.png";
-    			previewBox.src = flagURL;
-    		}
+        <script>
+            function flagPreview() {
+                var flagURL = document.getElementById("flag_url").value;
+                var previewBox = document.getElementById("flagpreview");
+                if (flagURL == "") flagURL = "data/flag.png";
+                previewBox.src = flagURL;
+            }
 
-    		function onSignIn(googleUser) {
-    			var profile = googleUser.getBasicProfile();
-    			var signinText = document.getElementById("g_signin_text");
-    			signinText.innerHTML = "Signed-In as: " + profile.getName();
+            function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                var signinText = document.getElementById("g_signin_text");
+                signinText.innerHTML = "Signed-In as: " + profile.getName();
 
-    			var proceedButton = document.getElementById("finalbutton");
-    			proceedButton.style.display = "block";
+                var proceedButton = document.getElementById("finalbutton");
+                proceedButton.style.display = "block";
 
-    			var tokenBox = document.getElementById("tokenbox");
-    			tokenBox.value = googleUser.getAuthResponse().id_token;
-    		}
-    	</script>
+                var tokenBox = document.getElementById("tokenbox");
+                tokenBox.value = googleUser.getAuthResponse().id_token;
+            }
+        </script>
     </body>
 </html>

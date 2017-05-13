@@ -49,8 +49,10 @@ if (isset($_GET["w"])) {
 <html>
 	<head>
 		<title>Edit <?php echo display_input($world) ?> | Sovereign.Land</title>
-        <link rel="stylesheet" href="stylesheets/editnation.css">
+        <link rel="stylesheet" href="stylesheets/editor.css">
+        <link rel="stylesheet" href="stylesheets/tabpage.css">
         <link rel="icon" type="image/png" href="favicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
 
@@ -67,7 +69,7 @@ if (isset($_GET["w"])) {
             </div>
         </div>
         <div id="titlearea">
-            <div id="nationtitle">
+            <div id="title">
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 <img src="<?php echo $world_data['banner']?>">
                 <h1>
@@ -76,7 +78,12 @@ if (isset($_GET["w"])) {
                 </h1>
             </div>
             <ul id="navbar">
-                <li class="active"><img src="data/icons/nation_wiki.png"><a href="#">Edit Wiki Entry</a></li>
+                <li class="active">
+                    <a href="#">
+                        <img src="data/icons/nation_wiki.png">
+                        <span class="navtext">Edit Wiki Entry</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <div id="wiki" class="content">

@@ -53,8 +53,10 @@ if (isset($_GET["n"])) {
 <html>
 	<head>
 		<title>Edit <?php echo display_input($nation) ?> | Sovereign.Land</title>
-        <link rel="stylesheet" href="stylesheets/editnation.css">
+        <link rel="stylesheet" href="stylesheets/editor.css">
+        <link rel="stylesheet" href="stylesheets/tabpage.css">
         <link rel="icon" type="image/png" href="favicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700|Roboto:400,400i,700,700i">
 
@@ -71,7 +73,7 @@ if (isset($_GET["n"])) {
             </div>
         </div>
         <div id="titlearea">
-            <div id="nationtitle">
+            <div id="title">
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 <img src="<?php echo $basicdata['flagURL']?>">
                 <h1>
@@ -80,10 +82,30 @@ if (isset($_GET["n"])) {
                 </h1>
             </div>
             <ul id="navbar">
-                <li class="active" id="wiki_tab"><img src="data/icons/nation_wiki.png"><a href="#" onclick="showTab('wiki')">Edit Wiki Entry</a></li>
-                <li id="post_tab"><img src="data/icons/nation_news.png"><a href="#" onclick="showTab('post')">Write New Post</a></li>
-                <li id="flag_tab"><img src="data/icons/nation_flag.png"><a href="#" onclick="showTab('flag')">Edit Flag</a></li>
-                <li id="friends_tab"><img src="data/icons/nation_friends.png"><a href="#" onclick="showTab('friends')">Edit Friends</a></li>
+                <li class="active" id="wiki_tab">
+                    <a href="#" onclick="showTab('wiki')">
+                        <img src="data/icons/nation_wiki.png">
+                        <span class="navtext">Edit Wiki Entry</span>
+                    </a>
+                </li>
+                <li id="post_tab">
+                    <a href="#" onclick="showTab('post')">
+                        <img src="data/icons/nation_news.png">
+                        <span class="navtext">Write New Post</span>
+                    </a>
+                </li>
+                <li id="flag_tab">
+                    <a href="#" onclick="showTab('flag')">
+                        <img src="data/icons/nation_flag.png">
+                        <span class="navtext">Edit Flag</span>
+                    </a>
+                </li>
+                <li id="friends_tab">
+                    <a href="#" onclick="showTab('friends')">
+                        <img src="data/icons/nation_friends.png">
+                        <span class="navtext">Edit Friends</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <div id="wiki" class="content">
