@@ -1,6 +1,6 @@
 .g-signin2 {float: right}
 
-#post, #flag, #friends {display: none}
+#post, #flag, #friends, #admins, #ban {display: none}
 
 textarea {
     padding: 8px;

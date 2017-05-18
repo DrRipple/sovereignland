@@ -78,14 +78,27 @@ if (isset($_GET["w"])) {
                 </h1>
             </div>
             <ul id="navbar">
-                <li class="active">
-                    <a href="#">
+                <li id="wiki_tab" class="active">
+                    <a href="#" onclick="showTab('wiki')">
                         <img src="data/icons/nation_wiki.png">
                         <span class="navtext">Edit Wiki Entry</span>
                     </a>
                 </li>
+                <li id="admins_tab">
+                    <a href="#" onclick="showTab('admins')">
+                        <img src="data/icons/admin.png">
+                        <span class="navtext">Manage Admins</span>
+                    </a>
+                </li>
+                <li id="ban_tab">
+                    <a href="#" onclick="showTab('ban')">
+                        <img src="data/icons/banhammer.png">
+                        <span class="navtext">Banhammer</span>
+                    </a>
+                </li>
             </ul>
         </div>
+
         <div id="wiki" class="content">
             <h3><?php echo $world_display ?> Wiki Entry</h3>
             <p>Formatted using <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Markdown</a>.</p>
@@ -94,6 +107,33 @@ if (isset($_GET["w"])) {
                 <input type="hidden" name="world" value="<?php echo $world ?>">
                 <input type="hidden" name="token" class="tokenbox">
                 <textarea name="wiki"><?php echo $wiki_data ?></textarea>
+                <hr>
+                <p class="g_signin_text">Sign-In With Google Above</p>
+                <div class="finalbutton">
+                    <p>Make sure you read over your post before publishing.</p>
+                    <button>Publish Wiki Entry</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="admins" class="content">
+            <h3>Manage <?php echo $world_display ?> Admins</h3>
+            <p>Only the world founder may change these permissions.</p>
+        </div>
+
+        <div id="ban" class="content">
+            <h3>Banhammer Controls</h3>
+            <form action="panel/banhammer.php" method="post" target="_blank">
+                <input type="hidden" name="nation" value="<?php echo $nation ?>">
+                <input type="hidden" name="world" value="<?php echo $world ?>">
+                <input type="hidden" name="token" class="tokenbox">
+                <p>Nation Name</p>
+                <input type="text" name="bannation">
+                <p>Punishment</p>
+                <select name="bantype">
+                    <option value="delete">Delete Nation Only</option>
+                    <option value="ban">Delete Nation, Ban Player</option>
+                </select>
                 <hr>
                 <p class="g_signin_text">Sign-In With Google Above</p>
                 <div class="finalbutton">
@@ -137,6 +177,20 @@ if (isset($_GET["w"])) {
                     tokenBoxes[i].value = googleUser.getAuthResponse().id_token;
                 }
     		}
+
+            function showTab(section) {
+                var theSection = document.getElementById(section);
+                var sectionTab = document.getElementById(section + "_tab");
+
+                var sections = document.getElementsByClassName("content");
+                var activeTabs = document.getElementsByClassName("active");
+
+                for (var i = 0; i < sections.length; i++) sections[i].style.display = "none";
+                activeTabs[0].className = "";
+
+                theSection.style.display = "block";
+                sectionTab.className = "active";
+            }
 
             function clearText(element) {
                 element.value = "";
