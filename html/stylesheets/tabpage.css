@@ -142,6 +142,7 @@ table {
     padding: 0;
     height: 100%;
     display: none;
+    width: 320px;
 }
 
 #menu li {
@@ -156,7 +157,7 @@ table {
 
 #menu input[type=text] {
     box-sizing: border-box;
-    width: 252px;
+    width: 100%;
     font-size: 18px;
     font-family: inherit;
     color: #ccc;
@@ -184,14 +185,15 @@ table {
     font-size: 18px;
     font-family: inherit;
     padding: 6px 0;
-    width: 120px;
-    margin-right: 12px;
+    width: 50%;
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
 }
 
 #menu button:hover {border-color: #4f4f4f}
+
+#identifier {font-size: 14px}
 
 @media screen and (max-width: 989px) {
     #topcontainer, #title, #navbar, .content {
@@ -210,4 +212,6 @@ table {
     h1 {font-size: 30px}
     h2 {font-size: 24px}
     h3 {font-size: 22px}
+
+    #menu {width: 100%}
 }

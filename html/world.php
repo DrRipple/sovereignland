@@ -148,6 +148,8 @@ if (isset($_GET["w"])) {
                 </form>
             </li>
             <li><a href="terms">Terms and Privacy Policy</a></li>
+            <li id="identifier">World Founder Identifier: <?php echo $world_data["userID"] ?>
+            </li>
         </ul>
 
         <script>

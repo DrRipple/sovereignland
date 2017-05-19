@@ -182,6 +182,8 @@ if (isset($_GET["w"]) && isset($_GET["n"])) {
                 </form>
             </li>
             <li><a href="terms">Terms and Privacy Policy</a></li>
+            <li id="identifier">Unique User Identifier: <?php echo $basicdata["userID"] ?>
+            </li>
         </ul>
 
         <script>
