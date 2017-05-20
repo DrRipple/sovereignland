@@ -118,7 +118,7 @@ if (isset($_GET["w"])) {
 
         <div id="admins" class="content">
             <h3>Manage <?php echo $world_display ?> Admins</h3>
-            <p>Only the world founder may change these permissions.</p>
+            <p>The ability to add new world admins will be available in the next update.</p>
         </div>
 
         <div id="ban" class="content">
@@ -137,8 +137,8 @@ if (isset($_GET["w"])) {
                 <hr>
                 <p class="g_signin_text">Sign-In With Google Above</p>
                 <div class="finalbutton">
-                    <p>Make sure you read over your post before publishing.</p>
-                    <button>Publish Wiki Entry</button>
+                    <p>Deleting any nation is irreversible. Make sure you spelled the name correctly.</p>
+                    <button>Swing Banhammer</button>
                 </div>
             </form>
         </div>

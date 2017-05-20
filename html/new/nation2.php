@@ -36,9 +36,16 @@ if (isset($_POST["token"])) {
     $userID_data = json_decode($userID_json, true);
     $userID = md5($userID_data["sub"]);
 
-    $name = test_input($_POST["name"]);
+    $name = preg_replace("/[^a-zA-Z0-9]+/", "", test_input($_POST["name"]));
     $name = strtolower($name);
     $name = str_replace(" ", "_", $name);
+
+    $bans = file_get_contents("../data/bans.txt");
+    if (strpos("<$world/$userID>", $bans) !== false) {
+        echo "You have been banned from that world.";
+        die();
+    }
+
     $dirpath = "../data/nations/$world/" . $name;
     mkdir($dirpath, 0755, true);
 
