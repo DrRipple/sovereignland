@@ -26,3 +26,28 @@
     border-top: 1px solid #ccc;
     padding: 8px;
 }
+
+button {
+    margin: 10px 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-family: inherit;
+    color: #4f4f4f;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    border-color: #4f4f4f;
+}
+
+button:active {
+    background: #eee;
+    border-color: #4f4f4f;
+}
+
+button:focus {
+    outline: none;
+}

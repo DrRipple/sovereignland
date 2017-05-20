@@ -51,7 +51,7 @@ if (isset($_GET["w"])) {
 
     $posts = scandir("data/posts/$world/");
     $posts_html = "";
-    for ($i = 2; $i < count($posts) && $i < 7; $i++) {
+    for ($i = count($posts) - 1; $i > count($posts) - 4; $i--) {
         $timestamp_unix = substr($posts[$i], 0, 10);
         $timestamp_show = date("d/m/Y H:i:s", $timestamp_unix);
         $time_html = "<span class='timestamp'>Posted at $timestamp_show</span>";
@@ -123,8 +123,16 @@ if (isset($_GET["w"])) {
         </div>
 
         <div id="posts" class="content">
-            <h3>Most Recent Events</h3>
+            <h3>Recent Happenings</h3>
+            <ul id="happenings">
+                
+            </ul>
+            <hr>
+            <h3>Latest Event Posts</h3>
             <?php echo $posts_html ?>
+            <a href="post?w=<?php echo $world ?>">
+                <button>Older Posts</button>
+            </a>
         </div>
 
         <div id="nations" class="content">
