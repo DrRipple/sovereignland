@@ -51,7 +51,7 @@ if (isset($_GET["w"])) {
 
     $posts = scandir("data/posts/$world/");
     $posts_html = "";
-    for ($i = count($posts) - 1; $i > count($posts) - 4; $i--) {
+    for ($i = count($posts) - 1; $i > count($posts) - 4 && $i > 1; $i--) {
         $timestamp_unix = substr($posts[$i], 0, 10);
         $timestamp_show = date("d/m/Y H:i:s", $timestamp_unix);
         $time_html = "<span class='timestamp'>Posted at $timestamp_show</span>";
