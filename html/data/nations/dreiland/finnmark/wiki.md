@@ -1,0 +1,3 @@
+# The Republic of Finnmark
+
+Finnmark is a sparsely populated, mountainous nation in Finnoscandia that borders Rusland to the east, Noreen to the west, and Solborg and Raikkonia to the south. It was created in 1974 as an independent, neutral nation for Sami people and Lapplanders amid tensions with the USPR. Throughout the Cold War, Finnmark served as a buffer nation between the Nordic powers and the USPR.

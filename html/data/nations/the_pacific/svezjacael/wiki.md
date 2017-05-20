@@ -1,0 +1,1 @@
+# The Greater Confederate Republic of Svezjacael and The Dependencies of The Fatherland is a nation that I will be filling out the factbook entry about later on as I finish my NS world Factbook and bring it with me.

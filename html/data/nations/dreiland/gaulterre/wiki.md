@@ -1,0 +1,4 @@
+#La République Gaulterrienne
+##(The Gaulterrienne Republic)
+-------------------------------------
+####Gaulterre, [ɡɔltær] is a transcontinental country with territory in Western Europe ( Gaulterre métropolitaine) and North Africa (Gaulterre Algérie). Gaulterre métropolitaine's borders extend from the English Channel in the north, to the Mediterranean in the south, while Gaulterre Algérie's borders extend from the Mediterranean in the north deep into the Saharan Desert in the south. Gaulterre Spans a total of 2,836,250 square kilometres (1,095,082 sq mi), and as of April 2017, has a population of nearly 105 million. It is a unitary semi-presidential republic with the capital in Lumiosère, the country's largest city and main cultural and commercial centre. Other major urban centres include Dzayer, Marseille, Oran, Lyon, Nice and Constantine.

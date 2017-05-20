@@ -1,0 +1,3 @@
+# Socialist Order of Sovyetska
+
+The Socialist Order of Sovyetska is a nation in Ukraine. It borders Rusland to the East, Vaustnie to the West and Tyanda to the Southwest. In the 1970s, the Sovyetska-Ukrainia Independent Force started a large rebellion in the USPR. The forces sent to deal with the rebellion were crushed when other Communist nations started rebelling and the USPR fought against it's own puppets until it collapsed in 1991. Originally Sovyetska and Ukrainia were two separate nations; Ukrainia being a Principality while Sovyetska was a Socialist Democracy. Eventually the two united after a referendum in Ukrainia.

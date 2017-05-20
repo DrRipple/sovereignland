@@ -1,0 +1,9 @@
+# The Queendom of Xelha
+
+The Queendom of Xelha is a massive, cultured nation, ruled by High Queen Yuki with a fair hand, and remarkable for its national health service, punitive income tax rates, and devotion to social welfare. The compassionate, democratic, cheerful, devout population of 1.455 billion Xelhans love a good election, and the government gives them plenty of them. Universities tend to be full of students debating the merits of various civil and political rights, while businesses are tightly regulated and the wealthy viewed with suspicion.
+
+The large government prioritizes Education, with Environment, Healthcare, and Welfare also on the agenda, while Defense isn't funded at all. It meets to discuss matters of state in the capital city of Blizzaria.
+
+The powerhouse Xelhan economy, worth 165 trillion Lumis a year, is quite specialized and led by the Information Technology industry, with significant contributions from Book Publishing, Tourism, and Basket Weaving. State-owned companies are common. Average income is an impressive 113,669 Lumis, and distributed extremely evenly, with little difference between the richest and poorest citizens.
+
+Police escort anti-abortion activists to free speech cages if they try to express their views, you need two tenors and a coloratura contralto to sing the national anthem properly, movie references are legally admissible in court, and government reports are now used to teach toddlers to read. Crime, especially youth-related, is totally unknown, thanks to a capable police force and progressive social policies in education and welfare. Xelha's national animal is the Ice Bird, which is also the nation's favorite main course.
