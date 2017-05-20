@@ -39,7 +39,8 @@ if (isset($_POST["token"])) {
     $nation_json = file_get_contents("../data/nations/$world/$nation/basic.json");
     $nation_data = json_decode($nation_json, true);
     if ($userID == $nation_data["userID"]) {
-    	$post_data = test_input($_POST["post"]) . "\n\n Posted by: " . display_input($nation);
+        $signature = "\n\n Posted by [" . display_input($nation) . "](nation?n=$nation&w=$world)";
+    	$post_data = test_input($_POST["post"]) . $signature;
     	$post_name = $t . "_$nation.md";
     	$post_file = fopen("../data/posts/$world/$post_name", "w");
     	fwrite($post_file, $post_data);
