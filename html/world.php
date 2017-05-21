@@ -123,14 +123,9 @@ if (isset($_GET["w"])) {
         </div>
 
         <div id="posts" class="content">
-            <h3>Recent Happenings</h3>
-            <ul id="happenings">
-                
-            </ul>
-            <hr>
-            <h3>Latest Event Posts</h3>
+            <h3>Recent Event Posts</h3>
             <?php echo $posts_html ?>
-            <a href="post?w=<?php echo $world ?>">
+            <a href="news?w=<?php echo $world ?>">
                 <button>Older Posts</button>
             </a>
         </div>

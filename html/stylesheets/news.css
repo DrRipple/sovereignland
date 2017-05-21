@@ -1,0 +1,152 @@
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    margin: 0;
+    color: #4f4f4f;
+    background: #fff;
+}
+
+#topbar {
+    background: #3472e9;
+    border-bottom: 10px solid #2a57ae;
+    width: 100%;
+    padding: 20px 0;
+}
+
+#topcontainer {
+    width: 900px;
+    margin: 0 auto;
+    color: #fff;
+}
+
+#topbar h1, #topbar h1 a, #topbar h1 a:visited {
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    font-size: 28px;
+    color: inherit;
+    text-decoration: none;
+}
+
+#topbar h1 a:hover {text-decoration: underline;}
+
+#signin {
+    display: inline-block;
+    float: right;
+    padding: 6px 0;
+}
+
+#signin a, #signin a:visited {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0 4px;
+}
+
+#signin img {height: 24px}
+
+.content {
+    width: 900px;
+    margin: 40px auto;
+}
+
+a, a:visited {color: #3472e9}
+a:hover {text-decoration: none}
+
+table {
+    border: 1px solid #ccc;
+}
+
+#title {
+    text-transform: uppercase;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #ccc;
+}
+
+.post {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 22px;
+}
+
+.timestamp {font-style: italic}
+
+.postcontent p {font-family: "Roboto Slab", sans-serif}
+
+#menu {
+    margin: 0;
+    list-style: none;
+    position: fixed;
+    background: #fff;
+    border-left: 10px solid #2a57ae;
+    top: 0;
+    right: 0;
+    padding: 0;
+    height: 100%;
+    display: none;
+    width: 320px;
+}
+
+#menu li {
+    padding: 18px 24px;
+    border-bottom: 1px solid #ccc;
+}
+
+#menu a, #menu a:visited {
+    color: #4f4f4f;
+    text-decoration: none;
+}
+
+#menu input[type=text] {
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 18px;
+    font-family: inherit;
+    color: #ccc;
+    padding: 4px;
+    border: 1px solid #ccc;
+    display: block;
+    margin-bottom: 12px;
+    border-radius: 4px;
+}
+
+#menu input[type=text]:hover {
+    border-color: #4f4f4f;
+    color: #4f4f4f;
+}
+
+#menu input[type=text]:focus {
+    border-color: #4f4f4f;
+    outline: none;
+}
+
+#menu button {
+    display: inline-block;
+    background: #fff;
+    color: #4f4f4f;
+    font-size: 18px;
+    font-family: inherit;
+    padding: 6px 0;
+    width: 50%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#menu button:hover {border-color: #4f4f4f}
+
+@media screen and (max-width: 989px) {
+    #topcontainer, #title, #navbar, .content {
+        box-sizing: border-box;
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    #topcontainer h1 a {font-size: 22px}
+
+    h1 {font-size: 30px}
+    h2 {font-size: 24px}
+    h3 {font-size: 22px}
+
+    #menu {width: 100%}
+}
